@@ -1,0 +1,1843 @@
+/* =========================================================
+   PAPAVERI ROSSI
+   FOGLIO DI STILE PRINCIPALE
+   ========================================================= */
+
+
+/* =========================================================
+   RESET GENERALE
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    background: #0b0a09;
+    color: #eee8dc;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+}
+
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+
+/* =========================================================
+   COLORI DEL SITO
+   ========================================================= */
+
+:root {
+
+    --black: #0b0a09;
+
+    --dark: #11100e;
+
+    --dark-2: #171411;
+
+    --paper: #eee8dc;
+
+    --muted: #a59e91;
+
+    --red: #a92720;
+
+    --red-light: #d13a30;
+
+    --border: rgba(238, 232, 220, 0.15);
+
+}
+
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
+.navbar {
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 90px;
+
+    padding: 0 6%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    z-index: 1000;
+
+    background: linear-gradient(
+        to bottom,
+        rgba(5, 5, 4, 0.95),
+        rgba(5, 5, 4, 0)
+    );
+
+    transition: 0.4s ease;
+}
+
+
+.navbar.scrolled {
+
+    background: rgba(10, 9, 8, 0.96);
+
+    backdrop-filter: blur(15px);
+
+}
+
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+.logo {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 25px;
+
+    letter-spacing: 4px;
+
+    font-weight: 600;
+
+}
+
+
+.logo span {
+
+    color: var(--red-light);
+
+}
+
+
+/* =========================================================
+   MENU
+   ========================================================= */
+
+.menu {
+
+    display: flex;
+
+    gap: 35px;
+
+}
+
+
+.menu a {
+
+    text-transform: uppercase;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    color: #d5cfc4;
+
+    position: relative;
+
+    transition: 0.3s ease;
+
+}
+
+
+.menu a::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: -8px;
+
+    width: 0;
+
+    height: 1px;
+
+    background: var(--red-light);
+
+    transition: 0.3s ease;
+
+}
+
+
+.menu a:hover {
+
+    color: white;
+
+}
+
+
+.menu a:hover::after {
+
+    width: 100%;
+
+}
+
+
+/* =========================================================
+   MENU MOBILE
+   ========================================================= */
+
+.menu-toggle {
+
+    display: none;
+
+    background: none;
+
+    border: none;
+
+    color: white;
+
+    font-size: 25px;
+
+    cursor: pointer;
+
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero {
+
+    position: relative;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    overflow: hidden;
+
+}
+
+
+/* =========================================================
+   IMMAGINE HERO
+
+   File:
+   images/hero.jpg
+   ========================================================= */
+
+.hero-background {
+
+    position: absolute;
+
+    inset: 0;
+
+    /* IMMAGINE HERO */
+    background-image: url("images/hero.jpg");
+
+    background-size: cover;
+
+    background-position: center;
+
+    transform: scale(1.05);
+
+    animation: cinematicZoom 15s ease-out forwards;
+
+}
+
+
+@keyframes cinematicZoom {
+
+    from {
+
+        transform: scale(1.08);
+
+    }
+
+    to {
+
+        transform: scale(1);
+
+    }
+
+}
+
+
+/* =========================================================
+   OSCURAMENTO HERO
+   ========================================================= */
+
+.hero-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            rgba(6, 5, 4, 0.95) 0%,
+            rgba(6, 5, 4, 0.68) 40%,
+            rgba(6, 5, 4, 0.15) 85%
+        ),
+
+        linear-gradient(
+            0deg,
+            #0b0a09 0%,
+            transparent 45%
+        );
+
+}
+
+
+/* =========================================================
+   CONTENUTO HERO
+   ========================================================= */
+
+.hero-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 90%;
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    padding-top: 80px;
+
+}
+
+
+.eyebrow,
+.section-label {
+
+    color: #c3baaa;
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 20px;
+
+}
+
+
+.hero h1 {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(80px, 13vw, 190px);
+
+    line-height: 0.73;
+
+    font-weight: 500;
+
+    letter-spacing: -4px;
+
+}
+
+
+.hero h1 span {
+
+    color: var(--red-light);
+
+}
+
+
+.red-line {
+
+    width: 100px;
+
+    height: 2px;
+
+    background: var(--red-light);
+
+    margin: 40px 0 22px;
+
+}
+
+
+.hero-subtitle {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 30px;
+
+    font-style: italic;
+
+    margin-bottom: 12px;
+
+}
+
+
+.hero-description {
+
+    max-width: 510px;
+
+    color: #c3bdb2;
+
+    line-height: 1.8;
+
+    font-size: 14px;
+
+}
+
+
+/* =========================================================
+   BOTTONI
+   ========================================================= */
+
+.hero-buttons {
+
+    display: flex;
+
+    gap: 15px;
+
+    margin-top: 35px;
+
+}
+
+
+.btn {
+
+    display: inline-block;
+
+    padding: 15px 27px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+
+    font-size: 10px;
+
+    transition: 0.3s ease;
+
+    border: 1px solid transparent;
+
+}
+
+
+.btn-red {
+
+    background: var(--red);
+
+    color: white;
+
+}
+
+
+.btn-red:hover {
+
+    background: var(--red-light);
+
+    transform: translateY(-3px);
+
+}
+
+
+.btn-outline {
+
+    border-color: rgba(255,255,255,0.4);
+
+    background: rgba(0,0,0,0.15);
+
+}
+
+
+.btn-outline:hover {
+
+    background: white;
+
+    color: #111;
+
+}
+
+
+/* =========================================================
+   SCROLL INDICATOR
+   ========================================================= */
+
+.scroll-down {
+
+    position: absolute;
+
+    bottom: 30px;
+
+    left: 6%;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    color: #999;
+
+    font-size: 8px;
+
+    letter-spacing: 3px;
+
+}
+
+
+.scroll-down div {
+
+    width: 50px;
+
+    height: 1px;
+
+    background: #888;
+
+}
+
+
+/* =========================================================
+   INTRO
+   ========================================================= */
+
+.intro {
+
+    display: grid;
+
+    grid-template-columns: 100px 1fr 1fr;
+
+    gap: 60px;
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    padding: 150px 30px;
+
+}
+
+
+.intro-number {
+
+    color: var(--red-light);
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+
+}
+
+
+.intro h2 {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(50px, 6vw, 80px);
+
+    line-height: 0.9;
+
+    font-weight: 400;
+
+}
+
+
+.intro h2 em {
+
+    color: var(--red-light);
+
+}
+
+
+.intro-description {
+
+    padding-top: 20px;
+
+    max-width: 500px;
+
+}
+
+
+.intro-description p {
+
+    color: #aaa298;
+
+    line-height: 1.9;
+
+    margin-bottom: 20px;
+
+    font-size: 14px;
+
+}
+
+
+.text-link {
+
+    display: inline-block;
+
+    margin-top: 15px;
+
+    color: white;
+
+    text-transform: uppercase;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    border-bottom: 1px solid var(--red);
+
+    padding-bottom: 8px;
+
+}
+
+
+/* =========================================================
+   SEZIONI GENERALI
+   ========================================================= */
+
+.content-section {
+
+    padding: 130px 6%;
+
+}
+
+
+.dark-section {
+
+    background: #11100e;
+
+}
+
+
+.section-header {
+
+    max-width: 1200px;
+
+    margin: 0 auto 55px;
+
+}
+
+
+.section-header h2 {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(60px, 8vw, 100px);
+
+    font-weight: 400;
+
+    line-height: 0.85;
+
+}
+
+
+.section-header h2 em {
+
+    color: var(--red-light);
+
+}
+
+
+/* =========================================================
+   NEWS
+   ========================================================= */
+
+.news-card {
+
+    max-width: 1050px;
+
+    margin: auto;
+
+    border-left: 2px solid var(--red);
+
+    padding: 45px;
+
+    background: #171411;
+
+    box-shadow: 0 30px 80px rgba(0,0,0,0.25);
+
+}
+
+
+.news-date {
+
+    color: var(--red-light);
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 20px;
+
+}
+
+
+.news-card h3 {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(45px, 5vw, 70px);
+
+    font-weight: 400;
+
+    line-height: 0.95;
+
+    margin-bottom: 30px;
+
+}
+
+
+.news-card p {
+
+    color: #aaa298;
+
+    line-height: 1.9;
+
+    font-size: 14px;
+
+    margin-bottom: 22px;
+
+}
+
+
+.news-card .lead {
+
+    color: #ded8cd;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 25px;
+
+    line-height: 1.3;
+
+}
+
+
+.news-info {
+
+    border-top: 1px solid var(--border);
+
+    margin-top: 40px;
+
+    padding-top: 30px;
+
+    color: #d4cec3;
+
+    font-size: 12px;
+
+    line-height: 1.7;
+
+}
+
+
+/* =========================================================
+   FILM
+   ========================================================= */
+
+.film-section {
+
+    background: #0b0a09;
+
+}
+
+
+.trailer-wrapper {
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    aspect-ratio: 16 / 9;
+
+    background: black;
+
+    box-shadow: 0 30px 100px rgba(0,0,0,0.5);
+
+    overflow: hidden;
+
+}
+
+
+.trailer-wrapper iframe {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+}
+
+
+/* =========================================================
+   COPERTINA TRAILER
+
+   Usa la stessa immagine del HERO.
+   ========================================================= */
+
+.trailer-poster {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 100%;
+
+    overflow: hidden;
+
+}
+
+
+.trailer-poster img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    transition: transform 0.7s ease;
+
+}
+
+
+.trailer-poster::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0,0,0,0.75),
+            rgba(0,0,0,0.15)
+        );
+
+    pointer-events: none;
+
+}
+
+
+.trailer-poster:hover img {
+
+    transform: scale(1.04);
+
+}
+
+
+/* =========================================================
+   PULSANTE TRAILER
+   ========================================================= */
+
+.trailer-play {
+
+    position: absolute;
+
+    z-index: 2;
+
+    left: 50%;
+
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    padding: 18px 30px;
+
+    border: 1px solid rgba(255,255,255,0.6);
+
+    background: rgba(0,0,0,0.45);
+
+    color: white;
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+
+}
+
+
+.trailer-play span {
+
+    color: var(--red-light);
+
+    font-size: 18px;
+
+    margin-right: 10px;
+
+}
+
+
+.trailer-play:hover {
+
+    background: var(--red);
+
+    border-color: var(--red);
+
+    transform: translate(-50%, -50%) scale(1.05);
+
+}
+
+
+.trailer-play:hover span {
+
+    color: white;
+
+}
+
+
+.film-text {
+
+    max-width: 850px;
+
+    margin: 100px auto 0;
+
+}
+
+
+.film-text p {
+
+    color: #aaa298;
+
+    font-size: 15px;
+
+    line-height: 2;
+
+    margin-bottom: 25px;
+
+}
+
+
+.film-text .lead {
+
+    font-family: "Cormorant Garamond", serif;
+
+    color: #e0d9ce;
+
+    font-size: 30px;
+
+    line-height: 1.3;
+
+}
+
+
+.film-text h3 {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 55px;
+
+    font-weight: 400;
+
+    margin: 80px 0 30px;
+
+}
+
+
+.film-text h3 em {
+
+    color: var(--red-light);
+
+}
+
+
+.signature {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 28px !important;
+
+    font-style: italic;
+
+    color: #ddd !important;
+
+}
+
+
+/* =========================================================
+   STORIA
+   ========================================================= */
+
+.story-section {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    min-height: 850px;
+
+}
+
+
+.story-image {
+
+    position: relative;
+
+    min-height: 600px;
+
+    /* IMMAGINE STORIA */
+    background-image:
+
+        linear-gradient(
+            rgba(0,0,0,0.15),
+            rgba(0,0,0,0.6)
+        ),
+
+        url("images/storia.PNG");
+
+    background-size: cover;
+
+    background-position: center;
+
+}
+
+
+.story-content {
+
+    background: #171411;
+
+    padding: 100px 10%;
+
+}
+
+
+.story-content h2 {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(65px, 7vw, 100px);
+
+    font-weight: 400;
+
+    line-height: 0.8;
+
+    margin-bottom: 50px;
+
+}
+
+
+.story-content h2 em {
+
+    color: var(--red-light);
+
+}
+
+
+.story-content h3 {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 38px;
+
+    font-weight: 400;
+
+    margin: 55px 0 15px;
+
+}
+
+
+.story-content h3 em {
+
+    color: var(--red-light);
+
+}
+
+
+.story-content p {
+
+    color: #aaa298;
+
+    font-size: 14px;
+
+    line-height: 1.9;
+
+    margin-bottom: 20px;
+
+}
+
+
+.story-intro {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 28px !important;
+
+    line-height: 1.3 !important;
+
+    color: #ded8cd !important;
+
+}
+
+
+/* =========================================================
+   CITAZIONE
+   ========================================================= */
+
+.quote-section {
+
+    padding: 170px 20px;
+
+    max-width: 1050px;
+
+    margin: auto;
+
+    text-align: center;
+
+}
+
+
+.quote-mark {
+
+    font-family: "Cormorant Garamond", serif;
+
+    color: var(--red);
+
+    font-size: 120px;
+
+    height: 65px;
+
+}
+
+
+.quote-section blockquote {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(40px, 5vw, 65px);
+
+    line-height: 1;
+
+    font-style: italic;
+
+    color: #ded8cd;
+
+}
+
+
+.quote-section > p:last-child {
+
+    margin-top: 30px;
+
+    color: #8e877d;
+
+    text-transform: uppercase;
+
+    letter-spacing: 3px;
+
+    font-size: 9px;
+
+}
+
+
+/* =========================================================
+   BIOGRAFIE
+   ========================================================= */
+
+.bio {
+
+    max-width: 1150px;
+
+    margin: 0 auto 130px;
+
+    display: grid;
+
+    grid-template-columns: 340px 1fr;
+
+    gap: 70px;
+
+    align-items: start;
+
+}
+
+
+.bio-image {
+
+    width: 100%;
+
+    aspect-ratio: 3 / 4;
+
+    object-fit: cover;
+
+    filter: grayscale(15%);
+
+    transition: 0.6s ease;
+
+}
+
+
+.bio-image:hover {
+
+    filter: grayscale(0%);
+
+    transform: scale(1.02);
+
+}
+
+
+.bio-text h3 {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(55px, 6vw, 80px);
+
+    line-height: 0.85;
+
+    font-weight: 400;
+
+    margin-bottom: 35px;
+
+}
+
+
+.bio-text h3 em {
+
+    color: var(--red-light);
+
+}
+
+
+.bio-text p {
+
+    color: #aaa298;
+
+    font-size: 14px;
+
+    line-height: 1.9;
+
+    margin-bottom: 22px;
+
+}
+
+
+/* =========================================================
+   PRODUZIONE
+   ========================================================= */
+
+.production-section {
+
+    background: #0b0a09;
+
+    padding: 140px 6%;
+
+}
+
+
+.production-inner {
+
+    max-width: 1150px;
+
+    margin: auto;
+
+}
+
+
+.production-intro {
+
+    max-width: 600px;
+
+    color: #aaa298;
+
+    line-height: 1.8;
+
+    margin-top: 25px;
+
+}
+
+
+.production-card {
+
+    border-top: 1px solid var(--border);
+
+    padding: 40px 0;
+
+    position: relative;
+
+}
+
+
+.production-year {
+
+    color: var(--red-light);
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+
+}
+
+
+.production-card h3 {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 45px;
+
+    font-weight: 400;
+
+    margin: 10px 0 20px;
+
+}
+
+
+.production-card p {
+
+    max-width: 800px;
+
+    color: #aaa298;
+
+    line-height: 1.8;
+
+    font-size: 14px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.featured-production {
+
+    border-top: 2px solid var(--red);
+
+    padding-top: 45px;
+
+}
+
+
+.featured-production h3 {
+
+    font-size: clamp(55px, 7vw, 90px);
+
+}
+
+
+.production-line {
+
+    width: 80px;
+
+    height: 2px;
+
+    background: var(--red);
+
+    margin: 35px 0;
+
+}
+
+
+.production-credits {
+
+    color: #d2cbc0 !important;
+
+    font-size: 12px !important;
+
+}
+
+
+/* =========================================================
+   CITAZIONE FINALE
+   ========================================================= */
+
+.final-quote {
+
+    min-height: 600px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 100px 30px;
+
+    background:
+
+        linear-gradient(
+            rgba(10,8,7,0.82),
+            rgba(10,8,7,0.95)
+        ),
+
+        url("images/hero.jpg");
+
+    background-size: cover;
+
+    background-position: center;
+
+}
+
+
+.final-quote h2 {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(55px, 8vw, 100px);
+
+    line-height: 0.85;
+
+    font-weight: 400;
+
+    margin-bottom: 50px;
+
+}
+
+
+.final-quote h2 em {
+
+    color: var(--red-light);
+
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer {
+
+    background: #070706;
+
+    padding: 80px 6% 30px;
+
+    text-align: center;
+
+    border-top: 1px solid var(--border);
+
+}
+
+
+.footer-logo {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 38px;
+
+    letter-spacing: 5px;
+
+}
+
+
+.footer-logo span {
+
+    color: var(--red-light);
+
+}
+
+
+footer > p {
+
+    color: #777;
+
+    margin: 15px 0 35px;
+
+    font-size: 11px;
+
+}
+
+
+.footer-links {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 30px;
+
+    flex-wrap: wrap;
+
+}
+
+
+.footer-links a {
+
+    color: #999;
+
+    font-size: 9px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+
+    transition: 0.3s;
+
+}
+
+
+.footer-links a:hover {
+
+    color: white;
+
+}
+
+
+.copyright {
+
+    margin-top: 60px;
+
+    color: #4e4a45;
+
+    font-size: 8px;
+
+    letter-spacing: 1px;
+
+}
+
+
+/* =========================================================
+   ANIMAZIONI SCROLL
+   ========================================================= */
+
+.reveal {
+
+    opacity: 0;
+
+    transform: translateY(35px);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+
+}
+
+
+.reveal.visible {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+}
+
+
+/* =========================================================
+   RESPONSIVE TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+
+    .menu {
+
+        gap: 18px;
+
+    }
+
+
+    .menu a {
+
+        font-size: 9px;
+
+    }
+
+
+    .intro {
+
+        grid-template-columns: 60px 1fr;
+
+    }
+
+
+    .intro-description {
+
+        grid-column: 2;
+
+    }
+
+
+    .story-section {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .story-image {
+
+        min-height: 500px;
+
+    }
+
+
+    .bio {
+
+        grid-template-columns: 280px 1fr;
+
+        gap: 40px;
+
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE SMARTPHONE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+
+    .navbar {
+
+        height: 70px;
+
+        padding: 0 25px;
+
+    }
+
+
+    .logo {
+
+        font-size: 20px;
+
+    }
+
+
+    .menu {
+
+        position: absolute;
+
+        top: 70px;
+
+        left: 0;
+
+        width: 100%;
+
+        background: rgba(10,9,8,0.98);
+
+        backdrop-filter: blur(15px);
+
+        flex-direction: column;
+
+        align-items: center;
+
+        padding: 30px;
+
+        gap: 25px;
+
+        display: none;
+
+    }
+
+
+    .menu.active {
+
+        display: flex;
+
+    }
+
+
+    .menu-toggle {
+
+        display: block;
+
+    }
+
+
+    .hero-content {
+
+        padding-top: 90px;
+
+        width: 85%;
+
+    }
+
+
+    .hero h1 {
+
+        font-size: 75px;
+
+        letter-spacing: -2px;
+
+    }
+
+
+    .hero-subtitle {
+
+        font-size: 25px;
+
+    }
+
+
+    .hero-buttons {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+    }
+
+
+    .intro {
+
+        display: block;
+
+        padding: 100px 25px;
+
+    }
+
+
+    .intro-number {
+
+        margin-bottom: 30px;
+
+    }
+
+
+    .intro-description {
+
+        margin-top: 40px;
+
+    }
+
+
+    .content-section {
+
+        padding: 100px 25px;
+
+    }
+
+
+    .news-card {
+
+        padding: 30px 25px;
+
+    }
+
+
+    .news-card h3 {
+
+        font-size: 45px;
+
+    }
+
+
+    .trailer-wrapper {
+
+        aspect-ratio: 16 / 9;
+
+    }
+
+
+    .film-text {
+
+        margin-top: 70px;
+
+    }
+
+
+    .story-content {
+
+        padding: 80px 25px;
+
+    }
+
+
+    .story-image {
+
+        min-height: 400px;
+
+    }
+
+
+    .quote-section {
+
+        padding: 110px 25px;
+
+    }
+
+
+    .bio {
+
+        display: block;
+
+        margin-bottom: 100px;
+
+    }
+
+
+    .bio-image {
+
+        width: 75%;
+
+        max-width: 320px;
+
+        margin-bottom: 40px;
+
+    }
+
+
+    .production-section {
+
+        padding: 100px 25px;
+
+    }
+
+
+    .final-quote {
+
+        min-height: 500px;
+
+    }
+
+
+    footer {
+
+        padding-left: 25px;
+
+        padding-right: 25px;
+
+    }
+
+}
+
+
+/* =========================================================
+   ACCESSIBILITÀ
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    * {
+
+        animation-duration: 0.01ms !important;
+
+        transition-duration: 0.01ms !important;
+
+        scroll-behavior: auto !important;
+
+    }
+
+}
