@@ -1,191 +1,11 @@
-const navbar = document.getElementById("navbar");
-
-function updateNavbar() {
-    if (navbar) {
-        navbar.classList.toggle("scrolled", window.scrollY > 40);
-    }
-}
-
-window.addEventListener("scroll", updateNavbar, { passive: true });
-updateNavbar();
-
-
-const menuToggle = document.getElementById("menuToggle");
-const mainMenu = document.getElementById("mainMenu");
-
-if (menuToggle && mainMenu) {
-    menuToggle.addEventListener("click", () => {
-        mainMenu.classList.toggle("active");
-    });
-
-    mainMenu.querySelectorAll("a").forEach(link => {
-        link.addEventListener("click", () => {
-            mainMenu.classList.remove("active");
-        });
-    });
-}
-
-
-const revealElements = document.querySelectorAll(".reveal");
-
-if ("IntersectionObserver" in window) {
-
-    const revealObserver = new IntersectionObserver(
-        (entries, observer) => {
-
-            entries.forEach(entry => {
-
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("visible");
-                    observer.unobserve(entry.target);
-                }
-
-            });
-
-        },
-        {
-            threshold: 0.12
-        }
-    );
-
-    revealElements.forEach(element => {
-        revealObserver.observe(element);
-    });
-
-} else {
-
-    revealElements.forEach(element => {
-        element.classList.add("visible");
-    });
-
-}
-
-
-const heroBackground =
-    document.querySelector(".hero-background");
-
-
-function updateHeroParallax() {
-
-    if (
-        !heroBackground ||
-        window.matchMedia(
-            "(prefers-reduced-motion: reduce)"
-        ).matches
-    ) {
-        return;
-    }
-
-    heroBackground.style.transform =
-        `scale(1.05) translateY(${Math.min(
-            window.scrollY * 0.12,
-            120
-        )}px)`;
-}
-
-window.addEventListener(
-    "scroll",
-    updateHeroParallax,
-    { passive: true }
-);
-
-updateHeroParallax();
-
-
-document.querySelectorAll(
-    'a[href^="#"]'
-).forEach(link => {
-
-    link.addEventListener("click", event => {
-
-        const id =
-            link.getAttribute("href");
-
-        if (!id || id === "#") {
-            return;
-        }
-
-        const target =
-            document.querySelector(id);
-
-        if (!target) {
-            return;
-        }
-
-        event.preventDefault();
-
-        target.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-        });
-
-    });
-
-});
-
-
-// =====================================================
-// TRAILER PRINCIPALE YOUTUBE
-// =====================================================
-
-const trailer =
-    document.getElementById("trailer");
-
-const trailerPlay =
-    document.getElementById("trailerPlay");
-
-
-function startMainTrailer() {
-
-    if (
-        !trailer ||
-        !trailerPlay ||
-        trailer.dataset.started === "true"
-    ) {
-        return;
-    }
-
-    trailer.dataset.started = "true";
-
-    const iframe =
-        document.createElement("iframe");
-
-    iframe.src =
-        "https://www.youtube.com/embed/izSO8sYtEiI?autoplay=1&rel=0";
-
-    iframe.title =
-        "Papaveri Rossi - Trailer";
-
-    iframe.frameBorder = "0";
-
-    iframe.allow =
-        "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
-
-    iframe.allowFullscreen = true;
-
-    trailer.innerHTML = "";
-
-    trailer.appendChild(iframe);
-}
-
-
-if (trailerPlay) {
-    trailerPlay.addEventListener(
-        "click",
-        startMainTrailer
-    );
-}
-
-
 // =====================================================
 // INTERVISTE FACEBOOK
-// ANTEPRIMA FACEBOOK VISIBILE SUBITO
+// ANTEPRIMA VISIBILE SUBITO
+// PLAYER CARICATO SOLO AL CLICK
 // =====================================================
 
 const interviewTrailers =
-    document.querySelectorAll(
-        ".interview-trailer"
-    );
+    document.querySelectorAll(".interview-trailer");
 
 
 function loadFacebookVideo(wrapper) {
@@ -195,9 +15,7 @@ function loadFacebookVideo(wrapper) {
     }
 
     const videoUrl =
-        wrapper.getAttribute(
-            "data-video-url"
-        );
+        wrapper.getAttribute("data-video-url");
 
     if (!videoUrl) {
         return;
@@ -206,22 +24,17 @@ function loadFacebookVideo(wrapper) {
     /*
      * Evita di creare il player due volte.
      */
-    if (
-        wrapper.querySelector(
-            ".facebook-video-player"
-        )
-    ) {
+    if (wrapper.querySelector(".facebook-video-player")) {
         return;
     }
 
 
     /*
-     * Creiamo direttamente il player
-     * dentro .interview-trailer.
+     * Creiamo il player Facebook.
      *
-     * In questo modo il CSS già presente
-     * nel sito gli assegna automaticamente
-     * il formato 16:9.
+     * autoplay=1:
+     * il video parte quando l'utente ha
+     * appena cliccato ANTEPRIMA.
      */
     const iframe =
         document.createElement("iframe");
@@ -234,7 +47,7 @@ function loadFacebookVideo(wrapper) {
     iframe.src =
         "https://www.facebook.com/plugins/video.php?href=" +
         encodeURIComponent(videoUrl) +
-        "&show_text=false&autoplay=false";
+        "&show_text=false&autoplay=true";
 
 
     iframe.title =
@@ -257,31 +70,19 @@ function loadFacebookVideo(wrapper) {
     iframe.allowFullscreen = true;
 
 
-    /*
-     * Dimensioni esplicite per evitare
-     * problemi di visualizzazione.
-     */
     iframe.style.width = "100%";
     iframe.style.height = "100%";
     iframe.style.display = "block";
     iframe.style.border = "0";
-
-
-    /*
-     * Il player deve ricevere i clic.
-     */
     iframe.style.pointerEvents = "auto";
 
 
     /*
-     * Rimuoviamo la vecchia copertina
-     * hero.jpg e il pulsante ANTEPRIMA.
+     * Eliminiamo l'anteprima SOLO dopo
+     * che l'utente ha cliccato.
      */
     const poster =
-        wrapper.querySelector(
-            ".interview-poster"
-        );
-
+        wrapper.querySelector(".interview-poster");
 
     if (poster) {
         poster.remove();
@@ -289,19 +90,45 @@ function loadFacebookVideo(wrapper) {
 
 
     /*
-     * Inseriamo Facebook direttamente
-     * nel riquadro del video.
+     * Eliminiamo il pulsante ANTEPRIMA.
+     */
+    const playButton =
+        wrapper.querySelector(".interview-play");
+
+    if (playButton) {
+        playButton.remove();
+    }
+
+
+    /*
+     * Inseriamo il player Facebook.
      */
     wrapper.appendChild(iframe);
 }
 
 
 // =====================================================
-// CARICA AUTOMATICAMENTE TUTTI I VIDEO
+// CLICK SU "ANTEPRIMA"
 // =====================================================
 
 interviewTrailers.forEach(wrapper => {
 
-    loadFacebookVideo(wrapper);
+    const playButton =
+        wrapper.querySelector(".interview-play");
+
+
+    if (!playButton) {
+        return;
+    }
+
+
+    playButton.addEventListener("click", event => {
+
+        event.preventDefault();
+        event.stopPropagation();
+
+        loadFacebookVideo(wrapper);
+
+    });
 
 });
