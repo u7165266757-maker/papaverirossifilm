@@ -1,743 +1,1237 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
+
+    <!-- =====================================================
+         IMPOSTAZIONI BASE DELLA PAGINA
+         ===================================================== -->
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Papaveri Rossi — Un film di Sergio Maifredi</title>
 
-    <meta name="description"
-          content="Papaveri Rossi — Un film di Sergio Maifredi. Una storia, un viaggio, un film.">
+
+    <!-- =====================================================
+         FONT
+         ===================================================== -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
-          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+
+    <!-- =====================================================
+         COLLEGAMENTO AL CSS
+         ===================================================== -->
 
     <link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
-<!-- =========================================================
-     NAVIGAZIONE
-========================================================= -->
 
-<header class="site-header" id="siteHeader">
+<!-- =========================================================
+     NAVBAR / MENU PRINCIPALE
+     ========================================================= -->
+
+<header class="navbar" id="navbar">
 
     <a href="#home" class="logo">
         PAPAVERI <span>ROSSI</span>
     </a>
 
-    <button
-        class="menu-toggle"
-        id="menuToggle"
-        aria-label="Apri menu"
-        aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-    </button>
 
-    <nav class="main-nav" id="mainNav">
+    <nav class="menu" id="mainMenu">
 
-        <a href="#news">NEWS</a>
-        <a href="#film">IL FILM</a>
-        <a href="#storia">LA STORIA</a>
-        <a href="#interviste">INTERVISTE</a>
-        <a href="#biografie">BIOGRAFIE</a>
-        <a href="#produzione">LA PRODUZIONE</a>
+        <a href="#news">News</a>
+
+        <a href="#film">Il film</a>
+
+        <a href="#storia">La storia</a>
+
+        <a href="#interviste">Interviste</a>
+
+        <a href="#biografie">Biografie</a>
+
+        <a href="#produzione">La produzione</a>
 
     </nav>
+
+
+    <button class="menu-toggle" id="menuToggle">
+        ☰
+    </button>
 
 </header>
 
 
-<main>
 
 <!-- =========================================================
-     HERO
-========================================================= -->
+     HOME / HERO
+     ========================================================= -->
 
-<section class="hero" id="home">
+<main id="home">
 
-    <img
-        src="images/hero.jpg"
-        alt="Papaveri Rossi"
-        class="hero-image">
+    <section class="hero">
 
-    <div class="hero-overlay"></div>
 
-    <div class="hero-content">
+        <!-- =================================================
+             IMMAGINE HERO
 
-        <p class="eyebrow">UN FILM DI SERGIO MAIFREDI</p>
+             FILE:
+             images/hero.jpg
+             ================================================= -->
 
-        <h1>
-            PAPAVERI
-            <span>ROSSI</span>
-        </h1>
+        <div class="hero-background"></div>
 
-        <p class="hero-subtitle">
-            Una storia italiana.<br>
-            Una memoria che continua a vivere.
-        </p>
 
-        <a href="#trailer" class="hero-button">
-            GUARDA IL TRAILER
-        </a>
+        <div class="hero-overlay"></div>
 
-    </div>
 
-    <a href="#news" class="scroll-down" aria-label="Scorri verso il basso">
-        <span></span>
-    </a>
+        <div class="hero-content">
 
-</section>
-
-
-<!-- =========================================================
-     NEWS
-========================================================= -->
-
-<section class="section news-section" id="news">
-
-    <div class="container">
-
-        <div class="section-heading">
-
-            <p class="section-number">01</p>
-
-            <div>
-                <p class="eyebrow">NEWS</p>
-                <h2>Il film a Venezia</h2>
-            </div>
-
-        </div>
-
-
-        <div class="news-grid">
-
-            <article class="news-card featured">
-
-                <p class="news-date">11 SETTEMBRE 2026</p>
-
-                <h3>
-                    Papaveri Rossi arriva
-                    alla Mostra del Cinema di Venezia
-                </h3>
-
-                <p>
-                    Un nuovo appuntamento per presentare il film
-                    di Sergio Maifredi e raccontare una storia che
-                    attraversa memoria, territorio e identità.
-                </p>
-
-            </article>
-
-
-            <article class="news-card">
-
-                <p class="news-date">PAPAVERI ROSSI</p>
-
-                <h3>
-                    Un film nato dalla memoria
-                </h3>
-
-                <p>
-                    Il racconto cinematografico intreccia
-                    testimonianze, luoghi e persone per restituire
-                    una memoria collettiva.
-                </p>
-
-            </article>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================================
-     IL FILM
-========================================================= -->
-
-<section class="section film-section" id="film">
-
-    <div class="container">
-
-        <div class="section-heading">
-
-            <p class="section-number">02</p>
-
-            <div>
-                <p class="eyebrow">IL FILM</p>
-                <h2>Papaveri Rossi</h2>
-            </div>
-
-        </div>
-
-
-        <div class="film-layout">
-
-            <div class="film-text">
-
-                <p class="lead">
-                    Un film di Sergio Maifredi.
-                </p>
-
-                <p>
-                    <strong>Papaveri Rossi</strong> nasce dal desiderio
-                    di trasformare la memoria in racconto.
-                </p>
-
-                <p>
-                    Attraverso immagini, testimonianze e luoghi,
-                    il film costruisce un percorso tra passato e
-                    presente, mettendo al centro le persone e
-                    le storie che hanno attraversato il tempo.
-                </p>
-
-                <p>
-                    Un'opera cinematografica che guarda alla storia
-                    senza dimenticare il presente.
-                </p>
-
-            </div>
-
-
-            <div class="film-details">
-
-                <div class="detail">
-                    <span>REGIA</span>
-                    <strong>Sergio Maifredi</strong>
-                </div>
-
-                <div class="detail">
-                    <span>TITOLO</span>
-                    <strong>Papaveri Rossi</strong>
-                </div>
-
-                <div class="detail">
-                    <span>GENERE</span>
-                    <strong>Documentario</strong>
-                </div>
-
-                <div class="detail">
-                    <span>ANNO</span>
-                    <strong>2026</strong>
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================================
-     TRAILER
-========================================================= -->
-
-<section class="trailer-section" id="trailer">
-
-    <div class="trailer-background">
-
-        <div class="trailer-content">
-
-            <p class="eyebrow">IL TRAILER</p>
-
-            <h2>
-                Guarda<br>
-                <span>Papaveri Rossi</span>
-            </h2>
-
-            <p>
-                Un'anticipazione del film.
+            <p class="eyebrow">
+                UN FILM DI SERGIO MAIFREDI
             </p>
 
-            <button
-                class="play-button"
-                id="mainTrailerButton"
-                type="button">
 
-                <span class="play-icon">▶</span>
-                <span>PLAY TRAILER</span>
-
-            </button>
-
-            <p class="trailer-message" id="trailerMessage"></p>
-
-        </div>
-
-    </div>
-
-</section>
+            <h1>
+                PAPAVERI<br>
+                <span>ROSSI</span>
+            </h1>
 
 
-<!-- =========================================================
-     LA STORIA
-========================================================= -->
+            <div class="red-line"></div>
 
-<section class="section story-section" id="storia">
 
-    <div class="container">
+            <p class="hero-subtitle">
+                Per la nostra e la vostra libertà.
+            </p>
 
-        <div class="section-heading">
 
-            <p class="section-number">03</p>
+            <p class="hero-description">
 
-            <div>
-                <p class="eyebrow">LA STORIA</p>
-                <h2>Una memoria da raccontare</h2>
+                Un popolo in cammino dalla Siberia all'Italia.
+                Una storia di libertà, memoria e cultura.
+
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <a href="#film" class="btn btn-red">
+                    Scopri il film
+                </a>
+
+                <a href="#trailer" class="btn btn-outline" id="heroTrailerButton">
+                    Guarda il trailer
+                </a>
+
             </div>
 
         </div>
 
 
-        <div class="story-layout">
+        <div class="scroll-down">
 
-            <div class="story-image">
+            <span>SCORRI</span>
 
+            <div></div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         INTRODUZIONE
+         ========================================================= -->
+
+    <section class="intro reveal">
+
+        <div class="intro-number">
+            01
+        </div>
+
+
+        <div class="intro-text">
+
+            <p class="section-label">
+                LA STORIA
+            </p>
+
+
+            <h2>
+                Prima di essere<br>
+                un esercito,<br>
+                <em>un popolo.</em>
+            </h2>
+
+        </div>
+
+
+        <div class="intro-description">
+
+            <p>
+                Centoventimila uomini, donne e bambini.
+                Un popolo liberato dai Gulag sovietici che,
+                guidato dal generale Władysław Anders,
+                attraversò il mondo per raggiungere l'Italia.
+            </p>
+
+
+            <p>
+                Tra soldati e armi viaggiavano libri,
+                scuole, musicisti, attori e scrittori.
+                Perché la cultura poteva diventare
+                l'arma più forte.
+            </p>
+
+
+            <a href="#storia" class="text-link">
+                Leggi la storia →
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         NEWS
+         ========================================================= -->
+
+    <section class="content-section dark-section reveal" id="news">
+
+        <div class="section-header">
+
+            <p class="section-label">
+                PAPAVERI ROSSI
+            </p>
+
+            <h2>
+                <em>News</em>
+            </h2>
+
+        </div>
+
+
+        <article class="news-card">
+
+            <div class="news-date">
+                11 SETTEMBRE 2026 · VENEZIA
+            </div>
+
+
+            <h3>
+                Papaveri Rossi arriva a Venezia
+            </h3>
+
+
+            <p class="lead">
+                Venerdì 11 settembre 2026, in anteprima europea
+                assoluta, “Papaveri rossi”, il terzo film di
+                Sergio Maifredi, approda a Venezia in occasione
+                della 83ª Mostra Internazionale d’Arte Cinematografica
+                di Venezia.
+            </p>
+
+
+            <p>
+                Il film sarà presentato dalle 9.30 alle 11.00
+                al Venice Production Bridge Meeting Space,
+                al terzo piano dell'Excelsior Hotel.
+            </p>
+
+
+            <p>
+                “Cinema & Arts”, alla sua quinta edizione in
+                occasione della Mostra, è organizzato da
+                Teatro Kalambur, Ateatro e Accademia Eleonora
+                Duse-Centro Sperimentale di Cinema e Arti Performative.
+            </p>
+
+
+            <p>
+                Interverranno, tra gli altri, il presidente di
+                giuria Alessio Nardin e l'autore del film
+                Sergio Maifredi.
+            </p>
+
+
+            <p>
+                Papaveri rossi porta a Venezia una storia quasi
+                sconosciuta in Italia: quella dei 120.000 uomini,
+                donne e bambini che dai Gulag sovietici arrivarono
+                a liberare Montecassino, Roma e Bologna.
+            </p>
+
+
+            <p>
+                Sotto la guida del generale Władysław Anders,
+                un intero popolo in cammino si trasformò in un
+                esercito che sbarcò in Puglia, risalì la penisola,
+                sfondò la Linea Gustav e conquistò Montecassino.
+            </p>
+
+
+            <p>
+                Tra le sue file c'erano anche attori, registi,
+                musicisti e scrittori: per Anders, a difesa di
+                un'identità che i sovietici avevano tentato di
+                cancellare nei Gulag, l'arma più forte era la cultura.
+            </p>
+
+
+            <p>
+                Girato tra Montecassino, Firenze, Napoli,
+                Torino e Roma, il film nasce da un lungo lavoro
+                di ricerca condotto da Sergio Maifredi e
+                Massimiliano Cividati.
+            </p>
+
+
+            <div class="news-info">
+
+                <strong>
+                    Venerdì 11 settembre 2026
+                </strong>
+
+                <br>
+
+                Ore 9.30–11.00
+
+                <br><br>
+
+                Venice Production Bridge Meeting Space
+
+                <br>
+
+                Excelsior Hotel · Venezia
+
+            </div>
+
+        </article>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         IL FILM
+         ========================================================= -->
+
+    <section class="content-section film-section reveal" id="film">
+
+        <div class="section-header">
+
+            <p class="section-label">
+                UN FILM DI SERGIO MAIFREDI
+            </p>
+
+           <div>
+    <h2>
+        Papaveri <em>rossi</em>
+    </h2>
+
+    <br><br>
+
+    <p>
+        Produzione Teatro Pubblico Ligure / Sergio Maifredi<br>
+        Un film di Sergio Maifredi<br>
+        Scritto da Sergio Maifredi e Massimiliano Cividati
+    </p>
+
+    <p>
+        Con le testimonianze di Eugenio Barba, Kazimierz Braun, Włodek Goldkorn,<br>
+        Krystyna Jaworska, Marta Herling, Paolo Morawski e Pietro Rogacien
+    </p>
+
+    <p>
+        Musiche — Andrea Zani e Gennaro Scarpato<br>
+        Fotografia e montaggio — Ruggiero Torre
+    </p>
+</div>
+
+
+
+        
+
+
+        <!-- =====================================================
+             TRAILER
+
+             Prima appare hero.jpg.
+             Premendo il pulsante viene caricato il trailer.
+             ===================================================== -->
+
+        <div class="trailer-wrapper" id="trailer">
+
+            <div class="trailer-poster" id="trailerPoster">
+
+                <!-- IMMAGINE DEL TRAILER -->
                 <img
-                    src="images/storia.PNG"
-                    alt="La storia di Papaveri Rossi">
+                    src="images/hero.jpg"
+                    alt="Papaveri Rossi - Trailer">
 
-            </div>
+                <button
+                    class="trailer-play"
+                    id="trailerPlay"
+                    type="button">
 
+                    <span>▶</span>
+                    GUARDA IL TRAILER
 
-            <div class="story-text">
-
-                <p class="lead">
-                    Ci sono storie che appartengono
-                    a chi le ha vissute.
-                </p>
-
-                <p>
-                    E ce ne sono altre che, attraverso il racconto,
-                    diventano patrimonio di tutti.
-                </p>
-
-                <p>
-                    <em>Papaveri Rossi</em> nasce da questa necessità:
-                    raccogliere una memoria e restituirla attraverso
-                    il cinema.
-                </p>
-
-                <p>
-                    Il film attraversa persone, luoghi e testimonianze,
-                    costruendo un dialogo tra ciò che è stato e ciò
-                    che ancora oggi ci riguarda.
-                </p>
+                </button>
 
             </div>
 
         </div>
 
-    </div>
 
-</section>
+        <div class="film-text">
+
+            <p class="lead">
+                Inseguo questa storia da quando, nel 2005,
+                ho iniziato a lavorare in Polonia.
+                Da allora non mi ha più lasciato.
+            </p>
 
 
-<!-- =========================================================
-     INTERVISTE
-========================================================= -->
+            <p>
+                È la storia di una fratellanza poco raccontata
+                tra due popoli, quello italiano e quello polacco,
+                che fin dal Risorgimento hanno combattuto
+                fianco a fianco per la propria libertà.
+            </p>
 
-<section class="section interviews-section" id="interviste">
 
-    <div class="container">
+            <p>
+                Ma soprattutto, pur essendo attraversata da
+                un'impresa bellica titanica, non è una storia
+                di guerra.
+            </p>
 
-        <div class="section-heading">
 
-            <p class="section-number">04</p>
+            <p>
+                È la storia della ricerca di libertà di un
+                popolo prigioniero nei Gulag sovietici che,
+                guidato dal generale Anders, riesce a raggiungere
+                l'Italia con mezzi di fortuna.
+            </p>
 
-            <div>
-                <p class="eyebrow">INTERVISTE</p>
-                <h2>Le voci del film</h2>
-            </div>
+
+            <p>
+                E a farlo diventando un esercito, ma prima
+                ancora ricompattandosi come popolo.
+            </p>
+
+
+            <h3>
+                La cultura diventa
+                <em>l'arma più forte.</em>
+            </h3>
+
+
+            <p>
+                Il Secondo Corpo d'Armata polacco, lungo tutto
+                il suo cammino, non smette mai di ricostruire
+                la propria identità attraverso la cultura:
+                pubblica libri, apre scuole da campo e arriva
+                a formare una vera compagnia d'arte drammatica
+                che produce spettacoli per i soldati.
+            </p>
+
+
+            <p>
+                Tra le sue fila ci sono grandi intellettuali
+                e scrittori, che di quelle vicende saranno
+                anche i narratori.
+            </p>
+
+
+            <p>
+                Raccontare Papaveri rossi significa per me
+                raccontare una storia dove un popolo prigioniero
+                ritrova la propria libertà prima di tutto
+                ricostruendo la propria cultura.
+            </p>
+
+
+            <p class="signature">
+                Sergio Maifredi
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         LA STORIA
+         ========================================================= -->
+
+    <section class="story-section reveal" id="storia">
+
+        <div class="story-image">
+
+            <!-- =================================================
+                 IMMAGINE STORIA
+
+                 FILE:
+                 images/storia.PNG
+                 ================================================= -->
 
         </div>
 
 
-        <p class="section-intro">
-            Testimonianze e conversazioni con i protagonisti
-            del progetto.
+        <div class="story-content">
+
+            <p class="section-label">
+                MEMORIA · LIBERTÀ · CULTURA
+            </p>
+
+
+            <h2>
+                La <em>storia</em>
+            </h2>
+
+
+            <p class="story-intro">
+                120.000 persone.
+                Un viaggio dalla Siberia all'Italia.
+                Una storia quasi sconosciuta.
+            </p>
+
+
+            <h3>
+                Un popolo in cammino
+            </h3>
+
+
+            <p>
+                Dai Gulag sovietici arrivarono in Italia
+                uomini, donne e bambini che, sotto la guida
+                del generale Władysław Anders, diedero vita
+                al Secondo Corpo d'Armata Polacco.
+            </p>
+
+
+            <p>
+                Non era soltanto un esercito.
+                Era una comunità in movimento, composta da
+                soldati ma anche da famiglie, intellettuali,
+                artisti, musicisti e scrittori.
+            </p>
+
+
+            <h3>
+                Montecassino
+            </h3>
+
+
+            <p>
+                Il Corpo d'Armata Polacco partecipò alla
+                battaglia di Montecassino, contribuendo allo
+                sfondamento della Linea Gustav e aprendo la
+                strada alla liberazione dell'Italia centrale.
+            </p>
+
+
+            <h3>
+                La cultura come
+                <em>resistenza</em>
+            </h3>
+
+
+            <p>
+                Accanto alle armi viaggiavano libri.
+                Venivano aperte scuole da campo.
+                Si organizzavano concerti e spettacoli.
+            </p>
+
+
+            <p>
+                Nacque persino una grande compagnia teatrale
+                itinerante. La cultura diventò così uno strumento
+                per conservare l'identità di un popolo che aveva
+                subito la prigionia e la deportazione.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         CITAZIONE
+         ========================================================= -->
+
+    <section class="quote-section reveal">
+
+        <div class="quote-mark">
+            “
+        </div>
+
+
+        <blockquote>
+            Prima ancora di diventare un esercito,
+            riuscirono a ricompattarsi come popolo.
+        </blockquote>
+
+
+        <p>
+            — PAPAVERI ROSSI
         </p>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         INTERVISTE
+         ========================================================= -->
+
+    <section class="content-section film-section reveal" id="interviste">
+
+        <div class="section-header">
+
+            <p class="section-label">
+                TESTIMONIANZE
+            </p>
+
+            <h2>
+                Le <em>interviste</em>
+            </h2>
+
+            <p class="production-intro">
+                Qui alcuni brevi trailer.
+            </p>
+
+        </div>
 
 
         <div class="interviews-grid">
 
 
-            <article class="interview-card">
-
-                <div class="interview-video">
-
-                    <div class="video-placeholder">
-
-                        <span class="small-play">▶</span>
-
-                        <span>
-                            INTERVISTA
-                        </span>
-
-                    </div>
-
-                    <button
-                        class="load-facebook-video"
-                        data-video="https://www.facebook.com/teatropubblicoligure/videos/1648009737002426/"
-                        type="button">
-                        GUARDA
-                    </button>
-
-                </div>
-
-                <div class="interview-info">
-                    <p>INTERVISTA 01</p>
-                    <h3>Il racconto</h3>
-                </div>
-
-            </article>
-
+            <!-- =================================================
+                 1. PAOLO MORAWSKI
+                 ================================================= -->
 
             <article class="interview-card">
 
-                <div class="interview-video">
+                <div
+                    class="trailer-wrapper interview-trailer"
+                    data-video-url="https://www.facebook.com/teatropubblicoligure/videos/4345408062343683/">
 
-                    <div class="video-placeholder">
+                    <div class="trailer-poster interview-poster">
 
-                        <span class="small-play">▶</span>
+                        <img
+                            src="images/hero.jpg"
+                            alt="Paolo Morawski - Intervista">
 
-                        <span>
-                            INTERVISTA
-                        </span>
+                        <button
+                            class="trailer-play interview-play"
+                            type="button">
 
-                    </div>
+                            <span>▶</span>
+                            ANTEPRIMA
 
-                    <button
-                        class="load-facebook-video"
-                        data-video="https://www.facebook.com/teatropubblicoligure/videos/4345408062343683/"
-                        type="button">
-                        GUARDA
-                    </button>
-
-                </div>
-
-                <div class="interview-info">
-                    <p>INTERVISTA 02</p>
-                    <h3>La memoria</h3>
-                </div>
-
-            </article>
-
-
-            <article class="interview-card">
-
-                <div class="interview-video">
-
-                    <div class="video-placeholder">
-
-                        <span class="small-play">▶</span>
-
-                        <span>
-                            INTERVISTA
-                        </span>
+                        </button>
 
                     </div>
 
-                    <button
-                        class="load-facebook-video"
-                        data-video="https://www.facebook.com/teatropubblicoligure/videos/1241440344780690/"
-                        type="button">
-                        GUARDA
-                    </button>
-
                 </div>
 
-                <div class="interview-info">
-                    <p>INTERVISTA 03</p>
-                    <h3>Il territorio</h3>
-                </div>
-
-            </article>
-
-
-            <article class="interview-card">
-
-                <div class="interview-video">
-
-                    <div class="video-placeholder">
-
-                        <span class="small-play">▶</span>
-
-                        <span>
-                            INTERVISTA
-                        </span>
-
-                    </div>
-
-                    <button
-                        class="load-facebook-video"
-                        data-video="https://www.facebook.com/teatropubblicoligure/videos/1782099786159517/"
-                        type="button">
-                        GUARDA
-                    </button>
-
-                </div>
-
-                <div class="interview-info">
-                    <p>INTERVISTA 04</p>
-                    <h3>Le persone</h3>
-                </div>
-
-            </article>
-
-
-            <article class="interview-card">
-
-                <div class="interview-video">
-
-                    <div class="video-placeholder">
-
-                        <span class="small-play">▶</span>
-
-                        <span>
-                            INTERVISTA
-                        </span>
-
-                    </div>
-
-                    <button
-                        class="load-facebook-video"
-                        data-video="https://www.facebook.com/teatropubblicoligure/videos/1978698096867715/"
-                        type="button">
-                        GUARDA
-                    </button>
-
-                </div>
-
-                <div class="interview-info">
-                    <p>INTERVISTA 05</p>
-                    <h3>Il progetto</h3>
-                </div>
-
-            </article>
-
-
-            <article class="interview-card">
-
-                <div class="interview-video">
-
-                    <div class="video-placeholder">
-
-                        <span class="small-play">▶</span>
-
-                        <span>
-                            INTERVISTA
-                        </span>
-
-                    </div>
-
-                    <button
-                        class="load-facebook-video"
-                        data-video="https://www.facebook.com/teatropubblicoligure/videos/1597215841894940/"
-                        type="button">
-                        GUARDA
-                    </button>
-
-                </div>
-
-                <div class="interview-info">
-                    <p>INTERVISTA 06</p>
-                    <h3>Il cinema</h3>
-                </div>
-
-            </article>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================================
-     BIOGRAFIE
-========================================================= -->
-
-<section class="section biographies-section" id="biografie">
-
-    <div class="container">
-
-        <div class="section-heading">
-
-            <p class="section-number">05</p>
-
-            <div>
-                <p class="eyebrow">BIOGRAFIE</p>
-                <h2>Le persone</h2>
-            </div>
-
-        </div>
-
-
-        <div class="biography-grid">
-
-
-            <article class="biography-card">
-
-                <div class="biography-image">
-
-                    <img
-                        src="images/sergio.JPG"
-                        alt="Sergio Maifredi">
-
-                </div>
-
-                <div class="biography-content">
-
-                    <p class="eyebrow">REGISTA</p>
-
-                    <h3>Sergio Maifredi</h3>
-
-                    <p>
-                        Regista e autore, Sergio Maifredi sviluppa
-                        progetti teatrali e cinematografici
-                        caratterizzati da una forte attenzione
-                        alla memoria, al territorio e alla narrazione.
-                    </p>
-
-                </div>
-
-            </article>
-
-
-            <article class="biography-card">
-
-                <div class="biography-image">
-
-                    <img
-                        src="images/massimiliano.JPG"
-                        alt="Massimiliano">
-
-                </div>
-
-                <div class="biography-content">
-
-                    <p class="eyebrow">PROGETTO</p>
-
-                    <h3>Massimiliano</h3>
-
-                    <p>
-                        Una delle voci che contribuiscono al racconto
-                        e alla costruzione della memoria al centro
-                        di Papaveri Rossi.
-                    </p>
-
-                </div>
-
-            </article>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================================
-     PRODUZIONE
-========================================================= -->
-
-<section class="section production-section" id="produzione">
-
-    <div class="container">
-
-        <div class="section-heading">
-
-            <p class="section-number">06</p>
-
-            <div>
-                <p class="eyebrow">LA PRODUZIONE</p>
-                <h2>Dietro il progetto</h2>
-            </div>
-
-        </div>
-
-
-        <div class="production-layout">
-
-            <div>
-
-                <p class="lead">
-                    Papaveri Rossi è un progetto
-                    cinematografico e culturale.
+                <p class="interview-name">
+                    Paolo Morawski
                 </p>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 2. PAOLO MORAWSKI - SECONDO ESTRATTO
+                 ================================================= -->
+
+            <article class="interview-card">
+
+                <div
+                    class="trailer-wrapper interview-trailer"
+                    data-video-url="https://www.facebook.com/teatropubblicoligure/videos/1241440344780690/">
+
+                    <div class="trailer-poster interview-poster">
+
+                        <img
+                            src="images/hero.jpg"
+                            alt="Paolo Morawski - Secondo estratto">
+
+                        <button
+                            class="trailer-play interview-play"
+                            type="button">
+
+                            <span>▶</span>
+                            ANTEPRIMA
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <p class="interview-name">
+                    Paolo Morawski <em>— secondo estratto</em>
+                </p>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 3. KRYSTYNA JAWORSKA
+                 ================================================= -->
+
+            <article class="interview-card">
+
+                <div
+                    class="trailer-wrapper interview-trailer"
+                    data-video-url="https://www.facebook.com/teatropubblicoligure/videos/1782099786159517/">
+
+                    <div class="trailer-poster interview-poster">
+
+                        <img
+                            src="images/hero.jpg"
+                            alt="Krystyna Jaworska - Intervista">
+
+                        <button
+                            class="trailer-play interview-play"
+                            type="button">
+
+                            <span>▶</span>
+                            ANTEPRIMA
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <p class="interview-name">
+                    Krystyna Jaworska
+                </p>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 4. KRYSTYNA JAWORSKA - SECONDO ESTRATTO
+                 ================================================= -->
+
+            <article class="interview-card">
+
+                <div
+                    class="trailer-wrapper interview-trailer"
+                    data-video-url="https://www.facebook.com/teatropubblicoligure/videos/1978698096867715/">
+
+                    <div class="trailer-poster interview-poster">
+
+                        <img
+                            src="images/hero.jpg"
+                            alt="Krystyna Jaworska - Secondo estratto">
+
+                        <button
+                            class="trailer-play interview-play"
+                            type="button">
+
+                            <span>▶</span>
+                            ANTEPRIMA
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <p class="interview-name">
+                    Krystyna Jaworska <em>— secondo estratto</em>
+                </p>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 5. MONTECASSINO QUOTA 593
+                 ================================================= -->
+
+            <article class="interview-card">
+
+                <div
+                    class="trailer-wrapper interview-trailer"
+                    data-video-url="https://www.facebook.com/teatropubblicoligure/videos/1597215841894940/">
+
+                    <div class="trailer-poster interview-poster">
+
+                        <img
+                            src="images/hero.jpg"
+                            alt="Montecassino quota 593">
+
+                        <button
+                            class="trailer-play interview-play"
+                            type="button">
+
+                            <span>▶</span>
+                            ANTEPRIMA
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <p class="interview-name">
+                    Montecassino <em>quota 593</em>
+                </p>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         BIOGRAFIE
+         ========================================================= -->
+
+    <section class="content-section dark-section reveal" id="biografie">
+
+        <div class="section-header">
+
+            <p class="section-label">
+                AUTORI · REGIA · TEATRO
+            </p>
+
+
+            <h2>
+                Le <em>biografie</em>
+            </h2>
+
+        </div>
+
+
+
+        <!-- =====================================================
+             SERGIO MAIFREDI
+             ===================================================== -->
+
+        <article class="bio">
+
+            <!-- FOTO SERGIO MAIFREDI -->
+            <img
+                src="images/sergio.JPG"
+                alt="Sergio Maifredi"
+                class="bio-image">
+
+
+            <div class="bio-text">
+
+                <p class="section-label">
+                    REGISTA · AUTORE
+                </p>
+
+
+                <h3>
+                    Sergio <em>Maifredi</em>
+                </h3>
+
 
                 <p>
-                    Un lavoro che nasce dall'incontro tra cinema,
-                    memoria e territorio.
+                    Ideatore di teatro nei luoghi della storia
+                    e del paesaggio Mediterraneo.
                 </p>
+
 
                 <p>
-                    Per informazioni sul film e sul progetto:
+                    Regista, presidente e direttore artistico
+                    di Teatro Pubblico Ligure, centro di
+                    produzione teatrale da lui fondato nel 2007.
                 </p>
 
-                <a
-                    class="email-link"
-                    href="mailto:lombardo@teatropubblicoligure.it">
-                    lombardo@teatropubblicoligure.it
-                </a>
+
+                <p>
+                    Profondo conoscitore della cultura polacca,
+                    da anni contribuisce alla sua conoscenza
+                    in Italia.
+                </p>
+
+
+                <p>
+                    È stato regista residente al Teatr Nowy
+                    di Poznań in Polonia dal 2005 al 2014.
+                </p>
+
+
+                <p>
+                    Ha curato le mostre “Tutto il teatro in un
+                    manifesto. Il manifesto d'arte in Polonia
+                    a vent'anni dalla Caduta del Muro” a
+                    Palazzo Ducale di Genova e a Roma.
+                </p>
+
+
+                <p>
+                    Ha inoltre curato “Wisława Szymborska.
+                    La gioia di scrivere” al Museo d'arte
+                    contemporanea Villa Croce di Genova.
+                </p>
+
+
+                <p>
+                    Nel 2012 è stato insignito della medaglia
+                    di “Bene Merito” dal Ministero degli Esteri
+                    della Repubblica Polacca.
+                </p>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- =====================================================
+             MASSIMILIANO CIVIDATI
+             ===================================================== -->
+
+        <article class="bio">
+
+            <!-- FOTO MASSIMILIANO CIVIDATI -->
+            <img
+                src="images/massimiliano.JPG"
+                alt="Massimiliano Cividati"
+                class="bio-image">
+
+
+            <div class="bio-text">
+
+                <p class="section-label">
+                     AUTORE · ATTORE
+                </p>
+
+
+                <h3>
+                    Massimiliano <em>Cividati</em>
+                </h3>
+
+
+                <p>
+                    Regista, autore e attore si forma con alcune
+                    delle figure di spicco del teatro europeo,
+                    tra i quali Grotowsky, Nekrosius, Karpov
+                    e Manfredini.
+                </p>
+
+
+                <p>
+                    Dal '98 è regista e direttore artistico
+                    di Aia Taumastica.
+                </p>
+
+
+                <p>
+                    Scrive e dirige numerosi spettacoli,
+                    tra cui “Nijinsky versus Amleto”,
+                    “Calibania ovvero De amore extremo”,
+                    “The soft Transition”, “Pink in Blues”,
+                    “Il nulla”, “Quattro tiri di corda”,
+                    “Petites Choses”, “Short skin”,
+                    “Sulla Pelle”, “Banvard’s Legacy”
+                    e “Ghiaccio”.
+                </p>
+
+
+                <p>
+                    Nel 2023 comincia una collaborazione con
+                    Teatro Pubblico Ligure che approda in
+                    due spettacoli dedicati all'Odissea.
+                </p>
+
+
+                <p>
+                    Da anni affianca l'attività di attore e
+                    regista con quella di insegnante.
+                </p>
+
+
+                <p>
+                    Dal 2001 è insegnante presso l'Accademia
+                    dei Filodrammatici di Milano, la Civica
+                    Scuola d'Arte Drammatica Paolo Grassi,
+                    l'Accademia Teatrale Veneta e Fondazione
+                    Cirko Vertigo.
+                </p>
+
+
+                <p>
+                    Dal 2023 è insieme a Raffaella Bonivento
+                    Direttore Artistico de il Bì La Fabbrica
+                    del gioco e delle Arti di Cormano.
+                </p>
+
+            </div>
+
+        </article>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         PRODUZIONE
+         ========================================================= -->
+
+    <section class="production-section reveal" id="produzione">
+
+        <div class="production-inner">
+
+            <div class="section-header">
+
+                <p class="section-label">
+                    TEATRO PUBBLICO LIGURE / SERGIO MAIFREDI
+                </p>
+
+
+                <h2>
+                    La <em>produzione</em>
+                </h2>
+
+
+                <p class="production-intro">
+                    Teatro Pubblico Ligure / Sergio Maifredi
+                     casa di produzione cinematografica
+                     Accanto alla sua attività di centro di produzione teatrale,
+                     Teatro Pubblico Ligure ha sviluppato negli ultimi anni una linea di produzione cinematografica,
+                      con tre titoli all’attivo:
+
+                </p>
 
             </div>
 
 
-            <div class="production-mark">
 
-                <span>PAPAVERI</span>
-                <strong>ROSSI</strong>
+            <!-- 2023 -->
 
-            </div>
+            <article class="production-card">
+
+                <div class="production-year">
+                    2023
+                </div>
+
+
+                <h3>
+                    Vite non calcolate
+                </h3>
+
+
+                <p>
+                    Diretto da Ermanno Cavazzoni e Sergio Maifredi,
+                    con lo stesso Cavazzoni.
+                </p>
+
+
+                <p>
+                   Presentato in concorso al Biografilm Festival 2023
+                   e in occasione della Biennale di Venezia 2023 
+                   nell’ambito del premio collaterale 
+                   ufficiale Cinema & Arts ideato da Alessio Nardin.
+
+                </p>
+
+            </article>
+
+
+
+            <!-- 2024 -->
+
+            <article class="production-card">
+
+                <div class="production-year">
+                    2024
+                </div>
+
+
+                <h3>
+                    Strade maestre
+                </h3>
+
+
+                <p>
+                    Diretto da Sergio Maifredi e Ruggiero Torre,
+                    dedicato ai grandi maestri del teatro europeo.
+                </p>
+
+
+                <p>
+                   Presentato in occasione della 81ª Mostra del Cinema di Venezia
+                   nell’ambito del premio collaterale ufficiale Cinema & Arts 
+                   ideato da Alessio Nardin.
+
+                </p>
+
+            </article>
+
+
+
+            <!-- 2026 -->
+
+            <article class="production-card featured-production">
+
+                <div class="production-year">
+                    2026
+                </div>
+
+
+                <h3>
+                    Papaveri rossi
+                </h3>
+
+
+                <p>
+                    <strong>Produzione Teatro Pubblico Ligure / Sergio Maifredi</strong>
+                </p>
+
+
+                <p>
+                    Un film di Sergio Maifredi
+                </p>
+
+
+                <p>
+                    Scritto da Sergio Maifredi e
+                    Massimiliano Cividati
+                </p>
+
+
+                <p>
+                    Con le testimonianze di Eugenio Barba,
+                    Kazimierz Braun, Włodek Goldkorn,
+                    Krystyna Jaworska, Marta Herling,
+                    Paolo Morawski e Pietro Rogacien
+                </p>
+                
+                <p>
+                    Musiche — Andrea Zani e Gennaro Scarpato
+
+                    Fotografia e montaggio — Ruggiero Torre
+                    
+                </p>
+
+
+                <div class="production-line"></div>
+
+                <h1>CONTATTI:</h1>
+
+
+                <p class="production-credits">
+                   Comunicazione e press: lombardo@teatropubblicoligure.it <br>
+                   Produzione: maifredi@teatropubbliligure.it
+                </p>
+
+            </article>
 
         </div>
 
-    </div>
+    </section>
 
-</section>
+
+
+    <!-- =========================================================
+         CITAZIONE FINALE
+         ========================================================= -->
+
+    <section class="final-quote reveal">
+
+        <p class="section-label">
+            PAPAVERI ROSSI
+        </p>
+
+
+        <h2>
+            Una storia di libertà.<br>
+            Una storia di <em>cultura.</em>
+        </h2>
+
+
+        <a href="#home" class="btn btn-red">
+            Torna all'inizio
+        </a>
+
+    </section>
+
+
 
 </main>
 
 
+
 <!-- =========================================================
      FOOTER
-========================================================= -->
+     ========================================================= -->
 
-<footer class="site-footer">
+<footer>
 
-    <div class="container footer-inner">
+    <div class="footer-logo">
+        PAPAVERI <span>ROSSI</span>
+    </div>
 
-        <div class="footer-logo">
-            PAPAVERI <span>ROSSI</span>
-        </div>
 
-        <p>
-            Un film di Sergio Maifredi
-        </p>
+    <p>
+        Un film di Sergio Maifredi
+    </p>
 
-        <p class="copyright">
-            © 2026 Papaveri Rossi
-        </p>
 
+    <div class="footer-links">
+
+        <a href="#news">News</a>
+
+        <a href="#film">Il film</a>
+
+        <a href="#storia">La storia</a>
+
+        <a href="#interviste">Interviste</a>
+
+        <a href="#biografie">Biografie</a>
+
+        <a href="#produzione">Produzione</a>
+
+    </div>
+
+
+    <div class="copyright">
+        © 2026 Papaveri Rossi — Tutti i diritti riservati
     </div>
 
 </footer>
 
 
+
 <script src="script.js"></script>
 
+
 </body>
+
 </html>
