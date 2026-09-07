@@ -367,5 +367,115 @@ if (heroTrailerButton) {
 
 
 /* =========================================================
+   VIDEO INTERVISTE (FACEBOOK)
+   =========================================================
+
+   Ogni card della sezione "Interviste" mostra all'inizio
+   la copertina (images/hero.jpg).
+
+   Cliccando sul pulsante "ANTEPRIMA":
+   - la copertina viene sostituita da un player Facebook
+   - il video del link corrispondente parte in autoplay
+
+   I link sono letti dall'attributo data-video-url
+   presente su ciascun elemento .interview-trailer.
+   ========================================================= */
+
+const interviewTrailers =
+    document.querySelectorAll(".interview-trailer");
+
+
+function startInterviewVideo(wrapperElement) {
+
+    if (!wrapperElement) {
+
+        return;
+
+    }
+
+
+    if (wrapperElement.dataset.started === "true") {
+
+        return;
+
+    }
+
+
+    const videoUrl =
+        wrapperElement.getAttribute("data-video-url");
+
+
+    if (!videoUrl) {
+
+        return;
+
+    }
+
+
+    wrapperElement.dataset.started = "true";
+
+
+    const encodedUrl =
+        encodeURIComponent(videoUrl);
+
+
+    const iframe =
+        document.createElement("iframe");
+
+
+    iframe.src =
+        `https://www.facebook.com/plugins/video.php?href=${encodedUrl}&show_text=false&autoplay=true`;
+
+
+    iframe.title =
+        "Video intervista - Papaveri Rossi";
+
+
+    iframe.frameBorder = "0";
+
+
+    iframe.setAttribute("scrolling", "no");
+
+
+    iframe.allow =
+        "autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share";
+
+
+    iframe.allowFullscreen = true;
+
+
+    wrapperElement.innerHTML = "";
+
+
+    wrapperElement.appendChild(iframe);
+
+}
+
+
+
+interviewTrailers.forEach(function (wrapperElement) {
+
+    const playButton =
+        wrapperElement.querySelector(".interview-play");
+
+
+    if (!playButton) {
+
+        return;
+
+    }
+
+
+    playButton.addEventListener("click", function () {
+
+        startInterviewVideo(wrapperElement);
+
+    });
+
+});
+
+
+
+/* =========================================================
    FINE JAVASCRIPT
    ========================================================= */
