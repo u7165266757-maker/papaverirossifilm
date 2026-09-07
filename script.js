@@ -1,68 +1,128 @@
 const navbar = document.getElementById("navbar");
+
 function updateNavbar() {
-    if (navbar) navbar.classList.toggle("scrolled", window.scrollY > 40);
+    if (navbar) {
+        navbar.classList.toggle("scrolled", window.scrollY > 40);
+    }
 }
+
 window.addEventListener("scroll", updateNavbar, { passive: true });
 updateNavbar();
+
 
 const menuToggle = document.getElementById("menuToggle");
 const mainMenu = document.getElementById("mainMenu");
 
 if (menuToggle && mainMenu) {
-    menuToggle.addEventListener("click", () => mainMenu.classList.toggle("active"));
-    mainMenu.querySelectorAll("a").forEach(link =>
-        link.addEventListener("click", () => mainMenu.classList.remove("active"))
-    );
+    menuToggle.addEventListener("click", () => {
+        mainMenu.classList.toggle("active");
+    });
+
+    mainMenu.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => {
+            mainMenu.classList.remove("active");
+        });
+    });
 }
+
 
 const revealElements = document.querySelectorAll(".reveal");
 
 if ("IntersectionObserver" in window) {
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("visible");
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.12 });
 
-    revealElements.forEach(element => revealObserver.observe(element));
+    const revealObserver = new IntersectionObserver(
+        (entries, observer) => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add("visible");
+
+                    observer.unobserve(entry.target);
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.12
+        }
+    );
+
+    revealElements.forEach(element => {
+        revealObserver.observe(element);
+    });
+
 } else {
-    revealElements.forEach(element => element.classList.add("visible"));
+
+    revealElements.forEach(element => {
+        element.classList.add("visible");
+    });
+
 }
 
-const heroBackground = document.querySelector(".hero-background");
+
+const heroBackground =
+    document.querySelector(".hero-background");
+
 
 function updateHeroParallax() {
+
     if (
         !heroBackground ||
-        window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    ) return;
+        window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches
+    ) {
+        return;
+    }
 
     heroBackground.style.transform =
-        `scale(1.05) translateY(${Math.min(window.scrollY * 0.12, 120)}px)`;
+        `scale(1.05) translateY(${Math.min(
+            window.scrollY * 0.12,
+            120
+        )}px)`;
 }
 
-window.addEventListener("scroll", updateHeroParallax, { passive: true });
+window.addEventListener(
+    "scroll",
+    updateHeroParallax,
+    { passive: true }
+);
+
 updateHeroParallax();
 
-document.querySelectorAll('a[href^="#"]').forEach(link => {
+
+document.querySelectorAll(
+    'a[href^="#"]'
+).forEach(link => {
+
     link.addEventListener("click", event => {
-        const id = link.getAttribute("href");
 
-        if (!id || id === "#") return;
+        const id =
+            link.getAttribute("href");
 
-        const target = document.querySelector(id);
+        if (!id || id === "#") {
+            return;
+        }
 
-        if (!target) return;
+        const target =
+            document.querySelector(id);
+
+        if (!target) {
+            return;
+        }
 
         event.preventDefault();
+
         target.scrollIntoView({
             behavior: "smooth",
             block: "start"
         });
+
     });
+
 });
 
 
@@ -70,24 +130,34 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 // TRAILER PRINCIPALE YOUTUBE
 // =====================================================
 
-const trailer = document.getElementById("trailer");
-const trailerPlay = document.getElementById("trailerPlay");
+const trailer =
+    document.getElementById("trailer");
+
+const trailerPlay =
+    document.getElementById("trailerPlay");
+
 
 function startMainTrailer() {
+
     if (
         !trailer ||
         !trailerPlay ||
         trailer.dataset.started === "true"
-    ) return;
+    ) {
+        return;
+    }
 
     trailer.dataset.started = "true";
 
-    const iframe = document.createElement("iframe");
+    const iframe =
+        document.createElement("iframe");
 
     iframe.src =
         "https://www.youtube.com/embed/izSO8sYtEiI?autoplay=1&rel=0";
 
-    iframe.title = "Papaveri Rossi - Trailer";
+    iframe.title =
+        "Papaveri Rossi - Trailer";
+
     iframe.frameBorder = "0";
 
     iframe.allow =
@@ -96,59 +166,105 @@ function startMainTrailer() {
     iframe.allowFullscreen = true;
 
     trailer.innerHTML = "";
+
     trailer.appendChild(iframe);
 }
 
+
 if (trailerPlay) {
-    trailerPlay.addEventListener("click", startMainTrailer);
+
+    trailerPlay.addEventListener(
+        "click",
+        startMainTrailer
+    );
+
 }
 
 
 // =====================================================
 // INTERVISTE FACEBOOK
-// ANTEPRIMA VISIBILE AUTOMATICAMENTE
+// ANTEPRIMA VISIBILE + VIDEO CLICCABILE
 // =====================================================
 
 const interviewTrailers =
-    document.querySelectorAll(".interview-trailer");
+    document.querySelectorAll(
+        ".interview-trailer"
+    );
 
 
-function createFacebookPlayer(wrapper, autoplay = false) {
+function createFacebookPlayer(
+    wrapper,
+    autoplay = false
+) {
 
-    if (!wrapper) return;
+    if (!wrapper) {
+        return;
+    }
 
     const videoUrl =
-        wrapper.getAttribute("data-video-url");
+        wrapper.getAttribute(
+            "data-video-url"
+        );
 
     const poster =
-        wrapper.querySelector(".interview-poster");
+        wrapper.querySelector(
+            ".interview-poster"
+        );
 
     if (
         !videoUrl ||
         !poster ||
         poster.querySelector("iframe")
-    ) return;
+    ) {
+        return;
+    }
 
     const iframe =
         document.createElement("iframe");
 
     iframe.src =
-        `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(videoUrl)}&show_text=false&autoplay=${autoplay ? "true" : "false"}`;
+        `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(
+            videoUrl
+        )}&show_text=false&autoplay=${
+            autoplay ? "true" : "false"
+        }`;
 
     iframe.title =
         "Video intervista - Papaveri Rossi";
 
     iframe.frameBorder = "0";
 
-    iframe.setAttribute("scrolling", "no");
+    iframe.setAttribute(
+        "scrolling",
+        "no"
+    );
 
     iframe.allow =
         "autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share";
 
     iframe.allowFullscreen = true;
 
-    iframe.style.pointerEvents =
-        autoplay ? "auto" : "none";
+    /*
+     * IMPORTANTE:
+     * il player deve poter ricevere il click.
+     */
+    iframe.style.pointerEvents = "auto";
+
+    /*
+     * Il player viene messo sopra il vecchio poster.
+     */
+    iframe.style.position = "absolute";
+    iframe.style.inset = "0";
+    iframe.style.width = "100%";
+    iframe.style.height = "100%";
+    iframe.style.border = "0";
+    iframe.style.zIndex = "2";
+
+    /*
+     * Il contenitore deve essere il riferimento
+     * per il posizionamento del player.
+     */
+    poster.style.position = "relative";
 
     poster.insertBefore(
         iframe,
@@ -162,39 +278,78 @@ function startInterviewVideo(wrapper) {
     if (
         !wrapper ||
         wrapper.dataset.started === "true"
-    ) return;
+    ) {
+        return;
+    }
 
     const videoUrl =
-        wrapper.getAttribute("data-video-url");
+        wrapper.getAttribute(
+            "data-video-url"
+        );
 
     const poster =
-        wrapper.querySelector(".interview-poster");
+        wrapper.querySelector(
+            ".interview-poster"
+        );
 
-    if (!videoUrl || !poster) return;
+    if (!videoUrl || !poster) {
+        return;
+    }
 
     let iframe =
         poster.querySelector("iframe");
 
+
+    /*
+     * Se il player non esiste ancora,
+     * lo creiamo.
+     */
     if (!iframe) {
-        createFacebookPlayer(wrapper, false);
-        iframe = poster.querySelector("iframe");
+
+        createFacebookPlayer(
+            wrapper,
+            false
+        );
+
+        iframe =
+            poster.querySelector("iframe");
     }
 
-    if (!iframe) return;
+
+    if (!iframe) {
+        return;
+    }
+
 
     wrapper.dataset.started = "true";
 
-    iframe.src =
-        `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(videoUrl)}&show_text=false&autoplay=true`;
 
-    iframe.style.pointerEvents = "auto";
+    /*
+     * Ricarica il player con autoplay.
+     */
+    iframe.src =
+        `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(
+            videoUrl
+        )}&show_text=false&autoplay=true`;
+
+
+    iframe.style.pointerEvents =
+        "auto";
+
 
     const button =
-        poster.querySelector(".interview-play");
+        poster.querySelector(
+            ".interview-play"
+        );
+
 
     if (button) {
-        button.style.display = "none";
+
+        button.style.display =
+            "none";
+
     }
+
 }
 
 
@@ -204,12 +359,20 @@ function startInterviewVideo(wrapper) {
 
 interviewTrailers.forEach(wrapper => {
 
-    // Carica subito il player Facebook
-    // senza richiedere il click su "ANTEPRIMA".
-    createFacebookPlayer(wrapper, false);
+    /*
+     * Mostra immediatamente il player Facebook.
+     */
+    createFacebookPlayer(
+        wrapper,
+        false
+    );
+
 
     const poster =
-        wrapper.querySelector(".interview-poster");
+        wrapper.querySelector(
+            ".interview-poster"
+        );
+
 
     if (poster) {
 
@@ -217,17 +380,34 @@ interviewTrailers.forEach(wrapper => {
             poster.querySelector("img");
 
         const button =
-            poster.querySelector(".interview-play");
+            poster.querySelector(
+                ".interview-play"
+            );
 
-        // Nasconde hero.jpg
-        // lasciando visibile l'anteprima Facebook.
+
+        /*
+         * Nascondiamo hero.jpg:
+         * il player Facebook rimane visibile.
+         */
         if (img) {
-            img.style.display = "none";
+
+            img.style.display =
+                "none";
+
         }
 
-        // Nasconde il pulsante ANTEPRIMA.
+
+        /*
+         * Nascondiamo il vecchio pulsante
+         * "ANTEPRIMA".
+         */
         if (button) {
-            button.style.display = "none";
+
+            button.style.display =
+                "none";
+
         }
+
     }
+
 });
