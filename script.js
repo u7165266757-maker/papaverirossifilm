@@ -1,68 +1,144 @@
-const navbar = document.getElementById("navbar");
+// =====================================================
+// NAVBAR
+// =====================================================
+
+const navbar =
+    document.getElementById("navbar");
+
 
 function updateNavbar() {
+
     if (navbar) {
-        navbar.classList.toggle("scrolled", window.scrollY > 40);
+
+        navbar.classList.toggle(
+            "scrolled",
+            window.scrollY > 40
+        );
+
     }
+
 }
 
-window.addEventListener("scroll", updateNavbar, { passive: true });
+
+window.addEventListener(
+    "scroll",
+    updateNavbar,
+    { passive: true }
+);
+
 updateNavbar();
 
 
-const menuToggle = document.getElementById("menuToggle");
-const mainMenu = document.getElementById("mainMenu");
+
+// =====================================================
+// MENU MOBILE
+// =====================================================
+
+const menuToggle =
+    document.getElementById("menuToggle");
+
+const mainMenu =
+    document.getElementById("mainMenu");
+
 
 if (menuToggle && mainMenu) {
-    menuToggle.addEventListener("click", () => {
-        mainMenu.classList.toggle("active");
-    });
 
-    mainMenu.querySelectorAll("a").forEach(link => {
-        link.addEventListener("click", () => {
-            mainMenu.classList.remove("active");
-        });
-    });
-}
+    menuToggle.addEventListener(
+        "click",
+        () => {
 
+            mainMenu.classList.toggle(
+                "active"
+            );
 
-const revealElements = document.querySelectorAll(".reveal");
-
-if ("IntersectionObserver" in window) {
-
-    const revealObserver = new IntersectionObserver(
-        (entries, observer) => {
-
-            entries.forEach(entry => {
-
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("visible");
-                    observer.unobserve(entry.target);
-                }
-
-            });
-
-        },
-        {
-            threshold: 0.12
         }
     );
 
+
+    mainMenu
+        .querySelectorAll("a")
+        .forEach(link => {
+
+            link.addEventListener(
+                "click",
+                () => {
+
+                    mainMenu.classList.remove(
+                        "active"
+                    );
+
+                }
+            );
+
+        });
+
+}
+
+
+
+// =====================================================
+// ANIMAZIONI SCROLL
+// =====================================================
+
+const revealElements =
+    document.querySelectorAll(".reveal");
+
+
+if ("IntersectionObserver" in window) {
+
+    const revealObserver =
+        new IntersectionObserver(
+            (entries, observer) => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add(
+                            "visible"
+                        );
+
+                        observer.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.12
+            }
+        );
+
+
     revealElements.forEach(element => {
+
         revealObserver.observe(element);
+
     });
 
 } else {
 
     revealElements.forEach(element => {
+
         element.classList.add("visible");
+
     });
 
 }
 
 
+
+// =====================================================
+// HERO PARALLAX
+// =====================================================
+
 const heroBackground =
-    document.querySelector(".hero-background");
+    document.querySelector(
+        ".hero-background"
+    );
 
 
 function updateHeroParallax() {
@@ -73,15 +149,20 @@ function updateHeroParallax() {
             "(prefers-reduced-motion: reduce)"
         ).matches
     ) {
+
         return;
+
     }
+
 
     heroBackground.style.transform =
         `scale(1.05) translateY(${Math.min(
             window.scrollY * 0.12,
             120
         )}px)`;
+
 }
+
 
 window.addEventListener(
     "scroll",
@@ -92,36 +173,57 @@ window.addEventListener(
 updateHeroParallax();
 
 
-document.querySelectorAll(
-    'a[href^="#"]'
-).forEach(link => {
 
-    link.addEventListener("click", event => {
+// =====================================================
+// SCROLL ANCHOR
+// =====================================================
 
-        const id =
-            link.getAttribute("href");
+document
+    .querySelectorAll('a[href^="#"]')
+    .forEach(link => {
 
-        if (!id || id === "#") {
-            return;
-        }
+        link.addEventListener(
+            "click",
+            event => {
 
-        const target =
-            document.querySelector(id);
+                const id =
+                    link.getAttribute("href");
 
-        if (!target) {
-            return;
-        }
 
-        event.preventDefault();
+                if (
+                    !id ||
+                    id === "#"
+                ) {
 
-        target.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-        });
+                    return;
+
+                }
+
+
+                const target =
+                    document.querySelector(id);
+
+
+                if (!target) {
+
+                    return;
+
+                }
+
+
+                event.preventDefault();
+
+
+                target.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+            }
+        );
 
     });
 
-});
 
 
 // =====================================================
@@ -132,7 +234,9 @@ const trailer =
     document.getElementById("trailer");
 
 const trailerPlay =
-    document.getElementById("trailerPlay");
+    document.getElementById(
+        "trailerPlay"
+    );
 
 
 function startMainTrailer() {
@@ -142,45 +246,57 @@ function startMainTrailer() {
         !trailerPlay ||
         trailer.dataset.started === "true"
     ) {
+
         return;
+
     }
 
+
     trailer.dataset.started = "true";
+
 
     const iframe =
         document.createElement("iframe");
 
+
     iframe.src =
         "https://www.youtube.com/embed/izSO8sYtEiI?autoplay=1&rel=0";
+
 
     iframe.title =
         "Papaveri Rossi - Trailer";
 
+
     iframe.frameBorder = "0";
+
 
     iframe.allow =
         "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
 
+
     iframe.allowFullscreen = true;
+
 
     trailer.innerHTML = "";
 
     trailer.appendChild(iframe);
+
 }
 
 
 if (trailerPlay) {
+
     trailerPlay.addEventListener(
         "click",
         startMainTrailer
     );
+
 }
+
 
 
 // =====================================================
 // INTERVISTE FACEBOOK
-// ANTEPRIMA VISIBILE SUBITO
-// PLAYER CARICATO SOLO AL CLICK
 // =====================================================
 
 const interviewTrailers =
@@ -189,33 +305,42 @@ const interviewTrailers =
     );
 
 
+
 function loadFacebookVideo(wrapper) {
 
     if (!wrapper) {
         return;
     }
 
+
     const videoUrl =
         wrapper.getAttribute(
             "data-video-url"
         );
+
 
     if (!videoUrl) {
         return;
     }
 
 
-    // Evita di creare il player due volte
+    // Evita di caricare il video due volte
+
     if (
         wrapper.querySelector(
             ".facebook-video-player"
         )
     ) {
+
         return;
+
     }
 
 
-    // Crea il player Facebook
+    // =================================================
+    // CREA IFRAME FACEBOOK
+    // =================================================
+
     const iframe =
         document.createElement("iframe");
 
@@ -250,65 +375,88 @@ function loadFacebookVideo(wrapper) {
     iframe.allowFullscreen = true;
 
 
-    iframe.style.width = "100%";
-    iframe.style.height = "100%";
-    iframe.style.display = "block";
-    iframe.style.border = "0";
-    iframe.style.pointerEvents = "auto";
+    iframe.style.width =
+        "100%";
 
 
-    // Rimuove l'anteprima dopo il click
+    iframe.style.height =
+        "100%";
+
+
+    iframe.style.display =
+        "block";
+
+
+    iframe.style.border =
+        "0";
+
+
+    iframe.style.pointerEvents =
+        "auto";
+
+
+    // =================================================
+    // RIMUOVE THUMBNAIL + PLAY
+    // =================================================
+
     const poster =
         wrapper.querySelector(
             ".interview-poster"
         );
 
+
     if (poster) {
+
         poster.remove();
+
     }
 
 
-    // Rimuove il pulsante ANTEPRIMA
-    const playButton =
-        wrapper.querySelector(
-            ".interview-play"
-        );
+    // =================================================
+    // INSERISCE FACEBOOK PLAYER
+    // =================================================
 
-    if (playButton) {
-        playButton.remove();
-    }
+    wrapper.appendChild(
+        iframe
+    );
 
-
-    // Inserisce il player Facebook
-    wrapper.appendChild(iframe);
 }
 
 
+
 // =====================================================
-// CLICK SU ANTEPRIMA
+// CLICK PLAY INTERVISTE
 // =====================================================
 
-interviewTrailers.forEach(wrapper => {
+interviewTrailers.forEach(
+    wrapper => {
 
-    const playButton =
-        wrapper.querySelector(
-            ".interview-play"
+        const playButton =
+            wrapper.querySelector(
+                ".interview-play"
+            );
+
+
+        if (!playButton) {
+            return;
+        }
+
+
+        playButton.addEventListener(
+            "click",
+            event => {
+
+                event.preventDefault();
+
+                event.stopPropagation();
+
+
+                loadFacebookVideo(
+                    wrapper
+                );
+
+            }
         );
 
-    if (!playButton) {
-        return;
     }
-
-    playButton.addEventListener(
-        "click",
-        event => {
-
-            event.preventDefault();
-            event.stopPropagation();
-
-            loadFacebookVideo(wrapper);
-
-        }
-    );
-
-});
+);
