@@ -36,9 +36,7 @@ if ("IntersectionObserver" in window) {
             entries.forEach(entry => {
 
                 if (entry.isIntersecting) {
-
                     entry.target.classList.add("visible");
-
                     observer.unobserve(entry.target);
                 }
 
@@ -172,18 +170,16 @@ function startMainTrailer() {
 
 
 if (trailerPlay) {
-
     trailerPlay.addEventListener(
         "click",
         startMainTrailer
     );
-
 }
 
 
 // =====================================================
 // INTERVISTE FACEBOOK
-// ANTEPRIMA VISIBILE + VIDEO CLICCABILE
+// ANTEPRIMA FACEBOOK VISIBILE SUBITO
 // =====================================================
 
 const interviewTrailers =
@@ -192,10 +188,7 @@ const interviewTrailers =
     );
 
 
-function createFacebookPlayer(
-    wrapper,
-    autoplay = false
-) {
+function loadFacebookVideo(wrapper) {
 
     if (!wrapper) {
         return;
@@ -206,168 +199,84 @@ function createFacebookPlayer(
             "data-video-url"
         );
 
-    const poster =
-        wrapper.querySelector(
-            ".interview-poster"
-        );
+    if (!videoUrl) {
+        return;
+    }
 
+    /*
+     * Evita di creare il player due volte.
+     */
     if (
-        !videoUrl ||
-        !poster ||
-        poster.querySelector("iframe")
+        wrapper.querySelector(
+            ".facebook-video-player"
+        )
     ) {
         return;
     }
 
+
+    /*
+     * Creiamo direttamente il player
+     * dentro .interview-trailer.
+     *
+     * In questo modo il CSS già presente
+     * nel sito gli assegna automaticamente
+     * il formato 16:9.
+     */
     const iframe =
         document.createElement("iframe");
 
+
+    iframe.className =
+        "facebook-video-player";
+
+
     iframe.src =
-        `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(
-            videoUrl
-        )}&show_text=false&autoplay=${
-            autoplay ? "true" : "false"
-        }`;
+        "https://www.facebook.com/plugins/video.php?href=" +
+        encodeURIComponent(videoUrl) +
+        "&show_text=false&autoplay=false";
+
 
     iframe.title =
         "Video intervista - Papaveri Rossi";
 
+
     iframe.frameBorder = "0";
+
 
     iframe.setAttribute(
         "scrolling",
         "no"
     );
 
+
     iframe.allow =
         "autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share";
 
+
     iframe.allowFullscreen = true;
 
+
     /*
-     * IMPORTANTE:
-     * il player deve poter ricevere il click.
+     * Dimensioni esplicite per evitare
+     * problemi di visualizzazione.
+     */
+    iframe.style.width = "100%";
+    iframe.style.height = "100%";
+    iframe.style.display = "block";
+    iframe.style.border = "0";
+
+
+    /*
+     * Il player deve ricevere i clic.
      */
     iframe.style.pointerEvents = "auto";
 
-    /*
-     * Il player viene messo sopra il vecchio poster.
-     */
-    iframe.style.position = "absolute";
-    iframe.style.inset = "0";
-    iframe.style.width = "100%";
-    iframe.style.height = "100%";
-    iframe.style.border = "0";
-    iframe.style.zIndex = "2";
 
     /*
-     * Il contenitore deve essere il riferimento
-     * per il posizionamento del player.
+     * Rimuoviamo la vecchia copertina
+     * hero.jpg e il pulsante ANTEPRIMA.
      */
-    poster.style.position = "relative";
-
-    poster.insertBefore(
-        iframe,
-        poster.firstChild
-    );
-}
-
-
-function startInterviewVideo(wrapper) {
-
-    if (
-        !wrapper ||
-        wrapper.dataset.started === "true"
-    ) {
-        return;
-    }
-
-    const videoUrl =
-        wrapper.getAttribute(
-            "data-video-url"
-        );
-
-    const poster =
-        wrapper.querySelector(
-            ".interview-poster"
-        );
-
-    if (!videoUrl || !poster) {
-        return;
-    }
-
-    let iframe =
-        poster.querySelector("iframe");
-
-
-    /*
-     * Se il player non esiste ancora,
-     * lo creiamo.
-     */
-    if (!iframe) {
-
-        createFacebookPlayer(
-            wrapper,
-            false
-        );
-
-        iframe =
-            poster.querySelector("iframe");
-    }
-
-
-    if (!iframe) {
-        return;
-    }
-
-
-    wrapper.dataset.started = "true";
-
-
-    /*
-     * Ricarica il player con autoplay.
-     */
-    iframe.src =
-        `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(
-            videoUrl
-        )}&show_text=false&autoplay=true`;
-
-
-    iframe.style.pointerEvents =
-        "auto";
-
-
-    const button =
-        poster.querySelector(
-            ".interview-play"
-        );
-
-
-    if (button) {
-
-        button.style.display =
-            "none";
-
-    }
-
-}
-
-
-// =====================================================
-// CARICAMENTO AUTOMATICO DELLE ANTEPRIME
-// =====================================================
-
-interviewTrailers.forEach(wrapper => {
-
-    /*
-     * Mostra immediatamente il player Facebook.
-     */
-    createFacebookPlayer(
-        wrapper,
-        false
-    );
-
-
     const poster =
         wrapper.querySelector(
             ".interview-poster"
@@ -375,39 +284,24 @@ interviewTrailers.forEach(wrapper => {
 
 
     if (poster) {
-
-        const img =
-            poster.querySelector("img");
-
-        const button =
-            poster.querySelector(
-                ".interview-play"
-            );
-
-
-        /*
-         * Nascondiamo hero.jpg:
-         * il player Facebook rimane visibile.
-         */
-        if (img) {
-
-            img.style.display =
-                "none";
-
-        }
-
-
-        /*
-         * Nascondiamo il vecchio pulsante
-         * "ANTEPRIMA".
-         */
-        if (button) {
-
-            button.style.display =
-                "none";
-
-        }
-
+        poster.remove();
     }
+
+
+    /*
+     * Inseriamo Facebook direttamente
+     * nel riquadro del video.
+     */
+    wrapper.appendChild(iframe);
+}
+
+
+// =====================================================
+// CARICA AUTOMATICAMENTE TUTTI I VIDEO
+// =====================================================
+
+interviewTrailers.forEach(wrapper => {
+
+    loadFacebookVideo(wrapper);
 
 });
