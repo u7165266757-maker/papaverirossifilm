@@ -1162,6 +1162,85 @@ img {
 
 
 /* =========================================================
+   INTERVISTE
+   ========================================================= */
+
+.interviews-grid {
+
+    max-width: 1200px;
+
+    margin: 60px auto 0;
+
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+    gap: 55px 40px;
+
+}
+
+
+.interview-card {
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+
+.interview-trailer {
+
+    max-width: 100%;
+
+    box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+
+}
+
+
+.interview-poster .trailer-play {
+
+    padding: 13px 22px;
+
+    font-size: 9px;
+
+}
+
+
+.interview-poster .trailer-play span {
+
+    font-size: 14px;
+
+    margin-right: 8px;
+
+}
+
+
+.interview-name {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 22px;
+
+    color: #ded8cd;
+
+    margin-top: 20px;
+
+    letter-spacing: 0.3px;
+
+}
+
+
+.interview-name em {
+
+    color: var(--red-light);
+
+    font-style: italic;
+
+}
+
+
+/* =========================================================
    BIOGRAFIE
    ========================================================= */
 
@@ -1599,6 +1678,13 @@ footer > p {
 
     }
 
+
+    .interviews-grid {
+
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+
+    }
+
 }
 
 
@@ -1775,6 +1861,17 @@ footer > p {
     .quote-section {
 
         padding: 110px 25px;
+
+    }
+
+
+    .interviews-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+
+        margin-top: 45px;
 
     }
 
