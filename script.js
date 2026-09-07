@@ -1,518 +1,265 @@
-// =========================================================
-// PAPAVERI ROSSI
-// JAVASCRIPT PRINCIPALE
-// =========================================================
+/* =========================================================
+   PAPAVERI ROSSI
+   SCRIPT.JS
+========================================================= */
 
+document.addEventListener("DOMContentLoaded", function () {
 
-// =========================================================
-// PAGINA PRONTA
-// =========================================================
+    /* =====================================================
+       HEADER
+    ===================================================== */
 
-document.documentElement.classList.remove("no-js");
+    const header = document.getElementById("siteHeader");
 
+    function updateHeader() {
 
-// =========================================================
-// ANIMAZIONI SCROLL
-// =========================================================
-//
-// Le sezioni .reveal partono invisibili.
-// Quando entrano nello schermo viene aggiunta .visible.
-//
-// Se IntersectionObserver non fosse disponibile,
-// rendiamo comunque tutto visibile.
-// =========================================================
+        if (!header) return;
 
-const revealElements =
-    document.querySelectorAll(".reveal");
+        if (window.scrollY > 40) {
+            header.classList.add("scrolled");
+        } else {
+            header.classList.remove("scrolled");
+        }
+    }
 
+    updateHeader();
 
-if ("IntersectionObserver" in window) {
-
-    const revealObserver =
-        new IntersectionObserver(
-
-            (entries, observer) => {
-
-                entries.forEach(entry => {
-
-                    if (entry.isIntersecting) {
-
-                        entry.target.classList.add("visible");
-
-                        observer.unobserve(
-                            entry.target
-                        );
-
-                    }
-
-                });
-
-            },
-
-            {
-                threshold: 0.08,
-                rootMargin: "0px 0px -40px 0px"
-            }
-
-        );
-
-
-    revealElements.forEach(element => {
-
-        revealObserver.observe(element);
-
+    window.addEventListener("scroll", updateHeader, {
+        passive: true
     });
 
-} else {
 
-    revealElements.forEach(element => {
+    /* =====================================================
+       MENU MOBILE
+    ===================================================== */
 
-        element.classList.add("visible");
+    const menuToggle = document.getElementById("menuToggle");
+    const mainNav = document.getElementById("mainNav");
 
-    });
+    if (menuToggle && mainNav) {
 
-}
+        menuToggle.addEventListener("click", function () {
 
-
-// =========================================================
-// NAVBAR
-// =========================================================
-
-const navbar =
-    document.getElementById("navbar");
-
-
-function updateNavbar() {
-
-    if (!navbar) {
-        return;
-    }
-
-
-    if (window.scrollY > 50) {
-
-        navbar.classList.add("scrolled");
-
-    } else {
-
-        navbar.classList.remove("scrolled");
-
-    }
-
-}
-
-
-window.addEventListener(
-    "scroll",
-    updateNavbar,
-    { passive: true }
-);
-
-
-updateNavbar();
-
-
-// =========================================================
-// MENU MOBILE
-// =========================================================
-
-const menuToggle =
-    document.getElementById("menuToggle");
-
-const mainMenu =
-    document.getElementById("mainMenu");
-
-
-function closeMobileMenu() {
-
-    if (!mainMenu || !menuToggle) {
-        return;
-    }
-
-
-    mainMenu.classList.remove("active");
-
-    menuToggle.setAttribute(
-        "aria-expanded",
-        "false"
-    );
-
-    document.body.classList.remove(
-        "menu-open"
-    );
-
-}
-
-
-if (menuToggle && mainMenu) {
-
-
-    menuToggle.addEventListener(
-        "click",
-        () => {
-
-            const isOpen =
-                mainMenu.classList.toggle(
-                    "active"
-                );
-
+            const isOpen = mainNav.classList.toggle("open");
 
             menuToggle.setAttribute(
                 "aria-expanded",
-                String(isOpen)
-            );
-
-
-            document.body.classList.toggle(
-                "menu-open",
-                isOpen
-            );
-
-        }
-    );
-
-
-    mainMenu
-        .querySelectorAll("a")
-        .forEach(link => {
-
-            link.addEventListener(
-                "click",
-                closeMobileMenu
+                isOpen ? "true" : "false"
             );
 
         });
 
-}
 
+        const navLinks = mainNav.querySelectorAll("a");
 
-// =========================================================
-// CHIUSURA MENU CON ESC
-// =========================================================
+        navLinks.forEach(function (link) {
 
-document.addEventListener(
-    "keydown",
-    event => {
+            link.addEventListener("click", function () {
 
-        if (event.key === "Escape") {
+                mainNav.classList.remove("open");
 
-            closeMobileMenu();
-
-        }
-
-    }
-);
-
-
-// =========================================================
-// CHIUSURA MENU QUANDO SI TORNA DESKTOP
-// =========================================================
-
-window.addEventListener(
-    "resize",
-    () => {
-
-        if (window.innerWidth > 700) {
-
-            closeMobileMenu();
-
-        }
-
-    }
-);
-
-
-// =========================================================
-// TRAILER PRINCIPALE
-// =========================================================
-//
-// ATTENZIONE:
-//
-// Qui puoi inserire l'URL del trailer vero.
-//
-// Esempio:
-//
-// const MAIN_TRAILER_URL =
-//     "https://www.facebook.com/...";
-// 
-// Per ora il trailer principale mostra la copertina.
-// =========================================================
-
-const MAIN_TRAILER_URL = "";
-
-const mainTrailer =
-    document.querySelector(".main-trailer");
-
-
-if (mainTrailer) {
-
-    mainTrailer.addEventListener(
-        "click",
-        () => {
-
-            if (!MAIN_TRAILER_URL) {
-
-                console.info(
-                    "Papaveri Rossi: inserisci l'URL del trailer nella costante MAIN_TRAILER_URL."
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
                 );
 
+            });
+
+        });
+
+    }
+
+
+    /* =====================================================
+       TRAILER PRINCIPALE
+       
+       IMPORTANTE:
+       Inserisci qui il vero URL del trailer quando lo hai.
+    ===================================================== */
+
+    const MAIN_TRAILER_URL = "";
+
+    const trailerButton =
+        document.getElementById("mainTrailerButton");
+
+    const trailerMessage =
+        document.getElementById("trailerMessage");
+
+
+    if (trailerButton) {
+
+        trailerButton.addEventListener("click", function () {
+
+            if (MAIN_TRAILER_URL.trim() !== "") {
+
+                window.open(
+                    MAIN_TRAILER_URL,
+                    "_blank",
+                    "noopener,noreferrer"
+                );
+
+            } else {
+
+                if (trailerMessage) {
+
+                    trailerMessage.textContent =
+                        "Il trailer sarà disponibile a breve.";
+
+                }
+
+            }
+
+        });
+
+    }
+
+
+    /* =====================================================
+       INTERVISTE FACEBOOK
+    ===================================================== */
+
+    const videoButtons =
+        document.querySelectorAll(".load-facebook-video");
+
+
+    videoButtons.forEach(function (button) {
+
+        button.addEventListener("click", function () {
+
+            const videoUrl =
+                button.getAttribute("data-video");
+
+            if (!videoUrl) return;
+
+
+            const videoContainer =
+                button.closest(".interview-video");
+
+            if (!videoContainer) return;
+
+
+            /*
+             * Evitiamo di creare due iframe
+             * nello stesso riquadro.
+             */
+
+            if (videoContainer.querySelector("iframe")) {
                 return;
-
             }
 
 
-            loadFacebookVideo(
-                mainTrailer,
-                MAIN_TRAILER_URL,
-                "Trailer - Papaveri Rossi"
+            const iframe =
+                document.createElement("iframe");
+
+
+            iframe.src =
+                "https://www.facebook.com/plugins/video.php" +
+                "?href=" +
+                encodeURIComponent(videoUrl) +
+                "&show_text=false" +
+                "&autoplay=true";
+
+
+            iframe.setAttribute(
+                "allow",
+                "autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
             );
 
-        }
-    );
+            iframe.setAttribute(
+                "allowfullscreen",
+                "true"
+            );
 
-}
-
-
-// =========================================================
-// FUNZIONE PLAYER FACEBOOK
-// =========================================================
-
-function loadFacebookVideo(
-    wrapper,
-    videoUrl,
-    title = "Video - Papaveri Rossi"
-) {
-
-    if (!wrapper || !videoUrl) {
-        return;
-    }
-
-
-    // Evita duplicazioni
-    if (
-        wrapper.querySelector(
-            ".facebook-video-player"
-        )
-    ) {
-
-        return;
-
-    }
-
-
-    const iframe =
-        document.createElement("iframe");
-
-
-    iframe.className =
-        "facebook-video-player";
-
-
-    iframe.src =
-        "https://www.facebook.com/plugins/video.php?href=" +
-        encodeURIComponent(videoUrl) +
-        "&show_text=false&autoplay=true";
-
-
-    iframe.title = title;
-
-
-    iframe.frameBorder = "0";
-
-
-    iframe.setAttribute(
-        "scrolling",
-        "no"
-    );
-
-
-    iframe.setAttribute(
-        "allowfullscreen",
-        "true"
-    );
-
-
-    iframe.allow =
-        "autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share";
-
-
-    iframe.style.width = "100%";
-
-    iframe.style.height = "100%";
-
-    iframe.style.display = "block";
-
-    iframe.style.border = "0";
-
-
-    // Rimuove la copertina
-    const poster =
-        wrapper.querySelector(
-            ".trailer-poster"
-        );
-
-
-    if (poster) {
-        poster.remove();
-    }
-
-
-    wrapper.appendChild(
-        iframe
-    );
-
-}
-
-
-// =========================================================
-// VIDEO INTERVISTE FACEBOOK
-// =========================================================
-
-const interviewTrailers =
-    document.querySelectorAll(
-        ".interview-trailer"
-    );
-
-
-interviewTrailers.forEach(
-    wrapper => {
-
-        const playButton =
-            wrapper.querySelector(
-                ".interview-play"
+            iframe.setAttribute(
+                "title",
+                "Video intervista Papaveri Rossi"
             );
 
 
-        if (!playButton) {
-            return;
-        }
+            const placeholder =
+                videoContainer.querySelector(".video-placeholder");
 
-
-        playButton.addEventListener(
-            "click",
-            event => {
-
-                event.preventDefault();
-
-                event.stopPropagation();
-
-
-                const videoUrl =
-                    wrapper.getAttribute(
-                        "data-video-url"
-                    );
-
-
-                if (!videoUrl) {
-
-                    console.warn(
-                        "Video Facebook mancante."
-                    );
-
-                    return;
-
-                }
-
-
-                loadFacebookVideo(
-                    wrapper,
-                    videoUrl,
-                    "Intervista - Papaveri Rossi"
-                );
-
+            if (placeholder) {
+                placeholder.style.display = "none";
             }
-        );
 
-    }
-);
+            button.style.display = "none";
 
+            videoContainer.appendChild(iframe);
 
-// =========================================================
-// LINK INTERNI
-// =========================================================
-//
-// Piccolo effetto di sicurezza per i link #...
-// =========================================================
-
-document
-    .querySelectorAll('a[href^="#"]')
-    .forEach(link => {
-
-        link.addEventListener(
-            "click",
-            event => {
-
-                const targetId =
-                    link.getAttribute("href");
-
-
-                if (
-                    !targetId ||
-                    targetId === "#"
-                ) {
-
-                    return;
-
-                }
-
-
-                const target =
-                    document.querySelector(
-                        targetId
-                    );
-
-
-                if (!target) {
-                    return;
-                }
-
-
-                event.preventDefault();
-
-
-                target.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start"
-                });
-
-            }
-        );
+        });
 
     });
 
 
-// =========================================================
-// CARICAMENTO PAGINA
-// =========================================================
-//
-// Se una sezione è già visibile al caricamento,
-// la rendiamo immediatamente visibile.
-// =========================================================
+    /* =====================================================
+       SCROLL MORBIDO
+    ===================================================== */
 
-window.addEventListener(
-    "load",
-    () => {
+    document.querySelectorAll('a[href^="#"]').forEach(function (link) {
 
-        revealElements.forEach(
-            element => {
+        link.addEventListener("click", function (event) {
 
-                const rect =
-                    element.getBoundingClientRect();
+            const targetId =
+                link.getAttribute("href");
 
-
-                if (
-                    rect.top <
-                    window.innerHeight * 0.95
-                ) {
-
-                    element.classList.add(
-                        "visible"
-                    );
-
-                }
-
+            if (!targetId || targetId === "#") {
+                return;
             }
-        );
 
-    }
-);
+            const target =
+                document.querySelector(targetId);
+
+            if (!target) {
+                return;
+            }
+
+            event.preventDefault();
+
+            const headerHeight =
+                header ? header.offsetHeight : 0;
+
+            const targetPosition =
+                target.getBoundingClientRect().top +
+                window.pageYOffset -
+                headerHeight;
+
+            window.scrollTo({
+                top: targetPosition,
+                behavior: "smooth"
+            });
+
+        });
+
+    });
+
+
+    /* =====================================================
+       CONTROLLO IMMAGINI
+       
+       Se un'immagine non viene trovata, mostriamo
+       comunque un fondo leggibile invece di rompere
+       la pagina.
+    ===================================================== */
+
+    document.querySelectorAll("img").forEach(function (image) {
+
+        image.addEventListener("error", function () {
+
+            image.classList.add("image-error");
+
+            console.warn(
+                "Immagine non trovata:",
+                image.getAttribute("src")
+            );
+
+        });
+
+    });
+
+
+    /* =====================================================
+       FINE
+    ===================================================== */
+
+});
