@@ -1197,16 +1197,6 @@ img {
 }
 
 
-/*
-   IMPORTANTISSIMO:
-
-   L'iframe Facebook è già presente al caricamento
-   della pagina.
-
-   In questo modo Facebook può mostrare subito
-   la sua vera thumbnail e il suo pulsante Play.
-*/
-
 .interview-trailer .facebook-video-player {
 
     position: absolute;
