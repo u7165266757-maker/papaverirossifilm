@@ -1,10 +1,4 @@
-// =====================================================
-// NAVBAR
-// =====================================================
-
-const navbar =
-    document.getElementById("navbar");
-
+const navbar = document.getElementById("navbar");
 
 function updateNavbar() {
 
@@ -19,7 +13,6 @@ function updateNavbar() {
 
 }
 
-
 window.addEventListener(
     "scroll",
     updateNavbar,
@@ -30,9 +23,9 @@ updateNavbar();
 
 
 
-// =====================================================
-// MENU MOBILE
-// =====================================================
+/* =========================================================
+   MENU MOBILE
+   ========================================================= */
 
 const menuToggle =
     document.getElementById("menuToggle");
@@ -76,9 +69,9 @@ if (menuToggle && mainMenu) {
 
 
 
-// =====================================================
-// ANIMAZIONI SCROLL
-// =====================================================
+/* =========================================================
+   ANIMAZIONI SCROLL
+   ========================================================= */
 
 const revealElements =
     document.querySelectorAll(".reveal");
@@ -88,6 +81,7 @@ if ("IntersectionObserver" in window) {
 
     const revealObserver =
         new IntersectionObserver(
+
             (entries, observer) => {
 
                 entries.forEach(entry => {
@@ -107,15 +101,19 @@ if ("IntersectionObserver" in window) {
                 });
 
             },
+
             {
                 threshold: 0.12
             }
+
         );
 
 
     revealElements.forEach(element => {
 
-        revealObserver.observe(element);
+        revealObserver.observe(
+            element
+        );
 
     });
 
@@ -123,7 +121,9 @@ if ("IntersectionObserver" in window) {
 
     revealElements.forEach(element => {
 
-        element.classList.add("visible");
+        element.classList.add(
+            "visible"
+        );
 
     });
 
@@ -131,9 +131,9 @@ if ("IntersectionObserver" in window) {
 
 
 
-// =====================================================
-// HERO PARALLAX
-// =====================================================
+/* =========================================================
+   PARALLASSE HERO
+   ========================================================= */
 
 const heroBackground =
     document.querySelector(
@@ -174,64 +174,74 @@ updateHeroParallax();
 
 
 
-// =====================================================
-// SCROLL ANCHOR
-// =====================================================
+/* =========================================================
+   SCROLL MORBIDO
+   ========================================================= */
 
-document
-    .querySelectorAll('a[href^="#"]')
-    .forEach(link => {
+document.querySelectorAll(
+    'a[href^="#"]'
+).forEach(link => {
 
-        link.addEventListener(
-            "click",
-            event => {
+    link.addEventListener(
+        "click",
+        event => {
 
-                const id =
-                    link.getAttribute("href");
-
-
-                if (
-                    !id ||
-                    id === "#"
-                ) {
-
-                    return;
-
-                }
+            const id =
+                link.getAttribute(
+                    "href"
+                );
 
 
-                const target =
-                    document.querySelector(id);
+            if (
+                !id ||
+                id === "#"
+            ) {
 
-
-                if (!target) {
-
-                    return;
-
-                }
-
-
-                event.preventDefault();
-
-
-                target.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start"
-                });
+                return;
 
             }
-        );
-
-    });
 
 
+            const target =
+                document.querySelector(
+                    id
+                );
 
-// =====================================================
-// TRAILER PRINCIPALE YOUTUBE
-// =====================================================
+
+            if (!target) {
+
+                return;
+
+            }
+
+
+            event.preventDefault();
+
+
+            target.scrollIntoView({
+
+                behavior: "smooth",
+
+                block: "start"
+
+            });
+
+        }
+    );
+
+});
+
+
+
+/* =========================================================
+   TRAILER PRINCIPALE YOUTUBE
+   ========================================================= */
 
 const trailer =
-    document.getElementById("trailer");
+    document.getElementById(
+        "trailer"
+    );
+
 
 const trailerPlay =
     document.getElementById(
@@ -252,11 +262,14 @@ function startMainTrailer() {
     }
 
 
-    trailer.dataset.started = "true";
+    trailer.dataset.started =
+        "true";
 
 
     const iframe =
-        document.createElement("iframe");
+        document.createElement(
+            "iframe"
+        );
 
 
     iframe.src =
@@ -267,19 +280,25 @@ function startMainTrailer() {
         "Papaveri Rossi - Trailer";
 
 
-    iframe.frameBorder = "0";
+    iframe.frameBorder =
+        "0";
 
 
     iframe.allow =
         "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
 
 
-    iframe.allowFullscreen = true;
+    iframe.allowFullscreen =
+        true;
 
 
-    trailer.innerHTML = "";
+    trailer.innerHTML =
+        "";
 
-    trailer.appendChild(iframe);
+
+    trailer.appendChild(
+        iframe
+    );
 
 }
 
@@ -295,168 +314,20 @@ if (trailerPlay) {
 
 
 
-// =====================================================
-// INTERVISTE FACEBOOK
-// =====================================================
-
-const interviewTrailers =
-    document.querySelectorAll(
-        ".interview-trailer"
-    );
-
-
-
-function loadFacebookVideo(wrapper) {
-
-    if (!wrapper) {
-        return;
-    }
-
-
-    const videoUrl =
-        wrapper.getAttribute(
-            "data-video-url"
-        );
-
-
-    if (!videoUrl) {
-        return;
-    }
-
-
-    // Evita di caricare il video due volte
-
-    if (
-        wrapper.querySelector(
-            ".facebook-video-player"
-        )
-    ) {
-
-        return;
-
-    }
-
-
-    // =================================================
-    // CREA IFRAME FACEBOOK
-    // =================================================
-
-    const iframe =
-        document.createElement("iframe");
-
-
-    iframe.className =
-        "facebook-video-player";
-
-
-    iframe.src =
-        "https://www.facebook.com/plugins/video.php?href=" +
-        encodeURIComponent(videoUrl) +
-        "&show_text=false&autoplay=true";
-
-
-    iframe.title =
-        "Video intervista - Papaveri Rossi";
-
-
-    iframe.frameBorder = "0";
-
-
-    iframe.setAttribute(
-        "scrolling",
-        "no"
-    );
-
-
-    iframe.allow =
-        "autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share";
-
-
-    iframe.allowFullscreen = true;
-
-
-    iframe.style.width =
-        "100%";
-
-
-    iframe.style.height =
-        "100%";
-
-
-    iframe.style.display =
-        "block";
-
-
-    iframe.style.border =
-        "0";
-
-
-    iframe.style.pointerEvents =
-        "auto";
-
-
-    // =================================================
-    // RIMUOVE THUMBNAIL + PLAY
-    // =================================================
-
-    const poster =
-        wrapper.querySelector(
-            ".interview-poster"
-        );
-
-
-    if (poster) {
-
-        poster.remove();
-
-    }
-
-
-    // =================================================
-    // INSERISCE FACEBOOK PLAYER
-    // =================================================
-
-    wrapper.appendChild(
-        iframe
-    );
-
-}
-
-
-
-// =====================================================
-// CLICK PLAY INTERVISTE
-// =====================================================
-
-interviewTrailers.forEach(
-    wrapper => {
-
-        const playButton =
-            wrapper.querySelector(
-                ".interview-play"
-            );
-
-
-        if (!playButton) {
-            return;
-        }
-
-
-        playButton.addEventListener(
-            "click",
-            event => {
-
-                event.preventDefault();
-
-                event.stopPropagation();
-
-
-                loadFacebookVideo(
-                    wrapper
-                );
-
-            }
-        );
-
-    }
-);
+/* =========================================================
+   INTERVISTE FACEBOOK
+   =========================================================
+
+   NON SERVE PIÙ JAVASCRIPT.
+
+   I player Facebook sono già inseriti direttamente
+   nell'HTML.
+
+   Facebook quindi mostra immediatamente:
+   - la propria thumbnail
+   - il proprio pulsante Play
+   - il player
+
+   Quando l'utente clicca Play, è Facebook a gestire
+   la riproduzione del video.
+   ========================================================= */
