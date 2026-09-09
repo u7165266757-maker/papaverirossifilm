@@ -1,16 +1,12 @@
 const navbar = document.getElementById("navbar");
 
 function updateNavbar() {
-
     if (navbar) {
-
         navbar.classList.toggle(
             "scrolled",
             window.scrollY > 40
         );
-
     }
-
 }
 
 window.addEventListener(
@@ -20,7 +16,6 @@ window.addEventListener(
 );
 
 updateNavbar();
-
 
 
 /* =========================================================
