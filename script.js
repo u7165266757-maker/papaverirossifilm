@@ -313,15 +313,14 @@ if (trailerPlay) {
    INTERVISTE FACEBOOK
    =========================================================
 
-   I player Facebook sono inseriti direttamente
-   nell'HTML.
+   Le interviste Facebook sono inserite direttamente
+   nell'HTML tramite iframe.
 
-   Non viene utilizzato JavaScript per le interviste.
+   Non serve JavaScript per far partire i video:
+   Facebook gestisce direttamente thumbnail,
+   pulsante Play e riproduzione.
 
-   Facebook mostra direttamente:
-   - la propria thumbnail
-   - il proprio pulsante Play
-   - il proprio player
-
-   La riproduzione viene gestita direttamente da Facebook.
+   Questa sezione viene lasciata vuota
+   intenzionalmente per non interferire
+   con i player Facebook.
    ========================================================= */
