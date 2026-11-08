@@ -721,6 +721,23 @@ img {
 }
 
 
+.news-card .news-credit {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-style: italic;
+
+    font-size: 19px;
+
+    color: var(--muted);
+
+    letter-spacing: 1px;
+
+    margin: -16px 0 30px;
+
+}
+
+
 .news-card .lead {
 
     color: #ded8cd;
